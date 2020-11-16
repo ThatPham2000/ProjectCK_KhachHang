@@ -1,35 +1,36 @@
 var express = require('express');
 var router = express.Router();
+const shopController = require('../controllers/shopController');
+const productDetailsController = require('../controllers/productDetailsController');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  res.render('index', { title: 'TechShop' });
+});
+router.get('/index.html', function(req, res, next) {
   res.render('index', { title: 'TechShop' });
 });
 router.get('/404.html', function(req, res, next) {
   res.render('404', { layout: false });
 });
 router.get('/blog-single.html', function(req, res, next) {
-  res.render('blog-single', { layout: false });
+  res.render('blog-single', { title: 'Blog Single' });
 });
 router.get('/blog.html', function(req, res, next) {
-  res.render('blog', { layout: false });
+  res.render('blog', { title: 'Blog' });
 });
 router.get('/cart.html', function(req, res, next) {
-  res.render('cart', { layout: false });
+  res.render('cart', { title: 'Cart' });
 });
 router.get('/checkout.html', function(req, res, next) {
-  res.render('checkout', { layout: false });
+  res.render('checkout', { title: 'Checkout' });
 });
 router.get('/contact-us.html', function(req, res, next) {
-  res.render('contact-us', { layout: false });
+  res.render('contact-us', { title: 'Contact Us' });
 });
 router.get('/login.html', function(req, res, next) {
-  res.render('login', { layout: false });
+  res.render('login', { title: 'Login' });
 });
-router.get('/product-details.html', function(req, res, next) {
-  res.render('product-details', { layout: false });
-});
-router.get('/shop.html', function(req, res, next) {
-  res.render('shop', { layout: false });
-});
+router.get('/product-details.html', productDetailsController.index);
+router.get('/shop.html', shopController.index);
 module.exports = router;
