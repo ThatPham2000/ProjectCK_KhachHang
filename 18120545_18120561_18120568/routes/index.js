@@ -2,14 +2,11 @@ var express = require('express');
 var router = express.Router();
 const shopController = require('../controllers/shopController');
 const productDetailsController = require('../controllers/productDetailsController');
+const homeController = require('../controllers/homeController');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'TechShop' });
-});
-router.get('/index.html', function(req, res, next) {
-  res.render('index', { title: 'TechShop' });
-});
+router.get('/', homeController.index);
+router.get('/index.html', homeController.index);
 router.get('/404.html', function(req, res, next) {
   res.render('404', { layout: false });
 });
