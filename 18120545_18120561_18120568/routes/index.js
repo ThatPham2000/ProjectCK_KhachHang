@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const shopController = require('../controllers/shopController');
-const productDetailsController = require('../controllers/productDetailsController');
-const homeController = require('../controllers/homeController');
+const shopController = require('../controllers/shop.controller');
+const productDetailsController = require('../controllers/productDetails.controller');
+const homeController = require('../controllers/home.controller');
 
 /* GET home page. */
 router.get('/', homeController.index);
@@ -28,6 +28,11 @@ router.get('/contact-us.html', function(req, res, next) {
 router.get('/login.html', function(req, res, next) {
   res.render('login', { title: 'Login' });
 });
-router.get('/product-details.html', productDetailsController.index);
+router.get('/product-details', productDetailsController.index);
 router.get('/shop.html', shopController.index);
+
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
 module.exports = router;
