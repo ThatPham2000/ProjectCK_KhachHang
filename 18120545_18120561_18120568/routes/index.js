@@ -25,14 +25,9 @@ router.get('/checkout.html', function(req, res, next) {
 router.get('/contact-us.html', function(req, res, next) {
   res.render('contact-us', { title: 'Contact Us' });
 });
-router.get('/login.html', function(req, res, next) {
-  res.render('login', { title: 'Login' });
-});
+
 router.get('/product-details', productDetailsController.index);
 router.get('/shop.html', shopController.index);
 
-router.get('/signup', (req, res) => {
-  res.render('signup');
-});
 
 module.exports = router;
