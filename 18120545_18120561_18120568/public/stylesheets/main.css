@@ -1421,8 +1421,17 @@ h2.title {
     overflow: hidden;
 }
 
-.login-form {}
+.login-form {
+    
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
 
+.login-button{
+
+    margin: 0px auto;
+}
 .signup-form {}
 
 .login-form h2,
