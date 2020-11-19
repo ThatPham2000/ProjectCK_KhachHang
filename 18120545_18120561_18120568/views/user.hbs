@@ -1,0 +1,27 @@
+
+        
+        <div id = "main">
+
+            
+            <div class = "infor">
+                <div>
+                    <label >Họ tên</label>
+                    {{#if locals.name}}
+                        value = name
+                    {{/if}}
+                    <input type = 'text' name = "name"  value = {{name}}> 
+                </div>
+                <div>
+                    <label>Email</label> 
+                    <input type = 'text' name = "email" value= {{email}}>
+                </div>
+                <div>
+                    <label>Phone</label>
+                    <input type = 'tel' name = "phone" value ={{phone}}>  
+                </div>
+                <button> Lưu</button>
+            </div>
+
+        </div>
+
+

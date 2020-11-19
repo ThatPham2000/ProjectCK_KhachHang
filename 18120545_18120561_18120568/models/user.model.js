@@ -1,0 +1,40 @@
+const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema({
+    
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        match: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    passwordReset:{
+        type: String,
+        require: true,
+    },
+    roles: {
+        type: String,
+        default: 'user'
+    },
+    isVerify: {
+        type: Boolean,
+        default: false,
+    },
+    phone: {
+        type: String,
+        required: false,
+    },
+    cart: {
+        type: Object
+    },
+}); 
+
+module.exports = mongoose.model('User', userSchema)

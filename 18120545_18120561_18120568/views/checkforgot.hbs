@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8" >
+        <title id = "title_page">Forgot password</title>
+    </head>
+    <body>
+        <form method = 'POST' action="/buyer/resetPassword/{{token}}">
+            <input name= "code" type = "text" placeholder= "Nhập mã code từ email">
+            <button type = "submit">Xác nhận</button>
+        </form>
+    </body>
+</html>
+
