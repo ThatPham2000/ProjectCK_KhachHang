@@ -7,6 +7,7 @@ const connectDB = require('./config/db')
 
 connectDB();
 
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -23,17 +24,21 @@ const signUpRouter = require('./routes/signup');
 
 const session = require('express-session');
 const flash = require('express-flash');
+
+const hbs = require('hbs');
+
 const MongoDBStore = require('connect-mongodb-session')(session);
 
 
 const buyer = require('./routes/buyer');
 const Cart = require('./models/cart.model');
-
+const User = require('./models/user.model');
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
 
 
 app.use(express.json());
@@ -45,6 +50,11 @@ app.use(flash());
 app.use(cookieParser(seKey));
 app.use(express.static('public'));
 
+hbs.registerHelper('select', function(selected, options) {
+  return options.fn(this).replace(
+      new RegExp(' value=\"' + selected + '\"'),
+      '$& selected="selected"');
+});
 
 app.use(
     session({
@@ -69,6 +79,19 @@ app.use((req, res, next) => {
   
   req.session.cart = cart;
   res.locals.session = req.session;
+
+
+  if (req.session.isVerify === true && req.isAuthenticated()){
+
+    User.findById(req.session.passport.user)
+    .then(user => {
+
+      if (user){
+        //res.locals.name = user.name;
+        app.locals.name = user.name;
+      }
+    })
+  }
 
   next();
 });

@@ -84,11 +84,13 @@
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								
-								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+			
 
+								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
+								<li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								
 								{{#if session.isVerify}}
-								<li class="dropdown-acc"><a href="/user/account/profile"><i class="fa fa-user"></i> Account</a></a>
+								<li class="dropdown-acc"><a href="/user/account/profile"><i class="fa fa-user"></i> {{name}}</a></a>
                                     <ul role = "menu" class="sub-menu-acc">
                                         <li><a href="/user/account/profile">Information</a></li>
 										<li><a href="/user/account/logout">Log out</a></li>
@@ -96,7 +98,7 @@
 								</li>
 								
 								{{else}}
-									<li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+									
 									<li><a href="/buyer/login"><i class="fa fa-lock"></i> Login</a></li>
 									
 								{{/if}}

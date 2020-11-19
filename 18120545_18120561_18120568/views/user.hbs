@@ -1,27 +1,140 @@
 
-        
-        <div id = "main">
+<section class="user-profile section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 offset-md-1 col-lg-3 offset-lg-0">
+				<div class="sidebar">
+					<!-- User Widget -->
+					<div class="widget user">
+						<!-- User Image -->
+						<div class="image ">
+							<img src="https://sieupet.com/sites/default/files/pictures/images/1-1473150685951-5.jpg"  alt="" class="">
+						</div>
+						<!-- User Name -->
+						<h5 class="text-center">Samanta Doe</h5>
+					</div>
+					<!-- Dashboard Links -->
+					<div class="widget dashboard-links">
+						<ul>
+							<li><a class="my-1 d-inline-block" href="">Savings Dashboard</a></li>
+							<li><a class="my-1 d-inline-block" href="">Saved Offer <span>(5)</span></a></li>
+							<li><a class="my-1 d-inline-block" href="">Favourite Stores <span>(3)</span></a></li>
+							<li><a class="my-1 d-inline-block" href="">Recommended</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
+				<!-- Edit Profile Welcome Text -->
+				<div class="widget welcome-message">
+					<h2>Edit profile</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+				</div>
+				<!-- Edit Personal Info -->
+				<div class="row">
+					<div class="col-lg-6 col-md-6">
+						<div class="widget personal-info">
+							<h3 class="widget-header user">Edit Personal Information</h3>
+							<form method = 'POST' action="/user/account/profile">
+								<!-- First Name -->
+								<div class="form-group">
+									<label for="first-name">Full Name</label>
+									<input name = 'name' type="text" class="form-control" id="first-name" value= '{{name}}'> 
+								</div>
+								<!-- Last Name -->
+								<div class="form-group">
+									<label for="last-name">email </label>
+									<input name = 'email' type="email" class="form-control" id="last-name"  value = "{{email}}"readonly> 
+								</div>
+								<!-- File chooser -->
+								<div class="form-group choose-file d-inline-flex">
+									<i class="fa fa-user text-center px-3"></i>
+									<input type="file" class="form-control-file mt-2 pt-1" id="input-file">
+								 </div>
+								<!-- Comunity Name -->
+								<div class="form-group">
+									<label for="comunity-name">Phone Number</label>
+									<input name = 'phone' type="tel" class="form-control" id="comunity-name" readonly value = '{{phone}}'> 
+								</div>
+								<!-- Checkbox -->
+								
 
-            
-            <div class = "infor">
-                <div>
-                    <label >Họ tên</label>
-                    {{#if locals.name}}
-                        value = name
-                    {{/if}}
-                    <input type = 'text' name = "name"  value = {{name}}> 
-                </div>
-                <div>
-                    <label>Email</label> 
-                    <input type = 'text' name = "email" value= {{email}}>
-                </div>
-                <div>
-                    <label>Phone</label>
-                    <input type = 'tel' name = "phone" value ={{phone}}>  
-                </div>
-                <button> Lưu</button>
-            </div>
+							    <div class="form-group"  >
+									<select name = 'sex' class="form-control"  >
+										{{#select sex}}
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other" >Other</option>
+										 {{/select}}
+                                    </select>
+										
+								</div>
+								<!-- Zip Code -->
+								<div class="form-group">
+									<label for="zip-code">Birth day</label>
+									<input type="date" class="form-control" id="zip-code" name = 'birthday' value = '{{birthday}}'>
+								</div>
+								
+								<!-- Submit button -->
+								<button type="submit"  class="btn btn-transparent">Save My Changes</button>
+							</form>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6">
+						<!-- Change Password -->
+					<div class="widget change-password">
+						<h3 class="widget-header user">Edit Password</h3>
+						<form method = "POST" action="/user/account/changePassword">
+							<!-- Current Password -->
+							
+							<div class="form-group">
+								<label for="current-password">Current Password</label>
+								<input name =  "password" type="password" class="form-control" id="current-password">
+							</div>
 
-        </div>
-
-
+							<!-- New Password -->
+							<div class="form-group">
+								<label for="new-password">New Password</label>
+								<input name =  "newpass" type="password" class="form-control" id="new-password">
+							</div>
+							<!-- Confirm New Password -->
+							<div class="form-group">
+								<label for="confirm-password">Confirm New Password</label>
+								<input name =  "confirmpass" type="password" class="form-control" id="confirm-password">
+							</div>
+							{{#if error}}
+									<div class="alert alert-warning">{{error}}</div>
+							{{/if}}
+							<!-- Submit Button -->
+							<button type = "submit" class="btn btn-transparent">Change Password</button>
+						</form>
+					</div>
+					</div>
+					<div class="col-lg-6 col-md-6">
+						<!-- Change Email Address -->
+					<div class="widget change-email mb-0">
+						<h3 class="widget-header user">Edit phone number</h3>
+						<form method="POST" action="/user/account/changePhone">
+							<!-- Current Password -->
+							<div class="form-group">
+								<label for="current-email">Current phone number</label>
+								<input name = "curPhone" type="tel" class="form-control" id="current-email">
+							</div>
+							<!-- New email -->
+							<div class="form-group">
+								<label for="new-email">New phone number</label>
+								<input name = "newPhone" type="tel" class="form-control" id="new-email">
+							</div>
+							{{#if errorPhone}}
+									<div class="alert alert-warning">{{errorPhone}}</div>
+							{{/if}}
+							<!-- Submit Button -->
+							<button class="btn btn-transparent">Change phone number</button>
+						</form>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

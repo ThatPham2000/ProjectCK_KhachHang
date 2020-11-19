@@ -31,6 +31,19 @@ const userSchema = new mongoose.Schema({
     phone: {
         type: String,
         required: false,
+        match: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+    },
+    birthday:{
+        type: String,
+        required: false
+    },
+    sex: {
+        type: String, 
+        enum: ["Male","Female", "Other"]
+    },
+    address: {
+        type: String,
+        require: false
     },
     cart: {
         type: Object
