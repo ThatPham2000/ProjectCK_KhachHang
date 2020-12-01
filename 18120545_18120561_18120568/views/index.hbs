@@ -207,14 +207,14 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center">Features Items</h2>
-                    {{#each shop}}
+                    {{#each product}}
                         <div class="col-sm-4">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                     <div class="productinfo text-center">
-                                        <img src="{{avt}}" alt="" />
-                                        <h2>{{basePrice}}</h2>
-                                        <p>{{name}}</p>
+                                        <img src="{{pathImages}}" alt="" />
+                                        <h2>{{price}}</h2>
+                                        <p>{{title}}</p>
                                        
 									
 									        <a href="/product-details" class="btn btn-default add-to-cart"><i class="fa fa-search-minus"></i>Detail</a>
@@ -224,11 +224,11 @@
                                     </div>
                                     <div class="product-overlay">
                                         <div class="overlay-content">
-                                            <h2>{{basePrice}}</h2>
-                                            <p>{{name}}</p>
+                                            <h2>{{price}}</h2>
+                                            <p>{{title}}</p>
                                             <div class = 'd-flex justify-content-center'>
 									
-									        <a href="/product-details" class="btn btn-default add-to-cart "><i class="fa fa-search-minus"></i>Detail</a>
+									        <a href="/product-details/{{_id}}" class="btn btn-default add-to-cart "><i class="fa fa-search-minus"></i>Detail</a>
 								        
                                             <a href="#" class="btn btn-default add-to-cart "><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>

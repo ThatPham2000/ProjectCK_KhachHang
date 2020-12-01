@@ -144,10 +144,10 @@
 			
 			<div class="col-sm-9 padding-right">
 				<div class="product-details"><!--product-details-->
-				{{#each productDetails}}
+				
 					<div class="col-sm-5">
 						<div class="view-product">
-							<img src={{avt}} alt="" />
+							<img src={{pathImages}} alt="" >
 							<h3>ZOOM</h3>
 						</div>
 						<div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -155,19 +155,19 @@
 							  <!-- Wrapper for slides -->
 								<div class="carousel-inner">
 									<div class="item active">
-									  <a href=""><img src={{avt}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  <a href=""><img src={{avt}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  <a href=""><img src={{avt}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
 									</div>
 									<div class="item">
-									  <a href=""><img src={{avt}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  <a href=""><img src={{avt}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  <a href=""><img src={{avt}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
 									</div>
 									<div class="item">
-									  <a href=""><img src={{avt}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  <a href=""><img src={{avt}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  <a href=""><img src={{avt}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
 									</div>
 									
 								</div>
@@ -185,11 +185,11 @@
 					<div class="col-sm-7">
 						<div class="product-information"><!--/product-information-->
 							<img src="images/product-details/rating.png" class="newarrival" alt="" />
-							<h2>{{name}}</h2>
+							<h2>{{title}}</h2>
 							<p>Web ID: 1089772</p>
 							<img src="images/product-details/rating.png" alt="" />
 							<span>
-								<span>{{basePrice}} VND</span>
+								<span>{{price}} VND</span>
 								<label>Quantity:</label>
 								<input type="text" value="3" />
 								<button type="button" class="btn btn-fefault cart">
@@ -203,7 +203,7 @@
 							<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 						</div><!--/product-information-->
 					</div>
-				{{/each}}
+				
 				</div><!--/product-details-->
 				
 				<div class="category-tab shop-details-tab"><!--category-tab-->

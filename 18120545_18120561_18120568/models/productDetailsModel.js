@@ -99,7 +99,7 @@ const ProductsLaptopsChema = new mongoose.Schema({ //schema of item displayed on
     },
 });
 
-module.exports = mongoose.model('ProductLaptop', ProductsLaptopsChema);//accessing a model
+module.exports.laptop = mongoose.model('laptops', ProductsLaptopsChema, 'laptops');//accessing a model
 
 const ProductsPCsChema = new mongoose.Schema({ //schema of item displayed on fron page
     pathImages: {
@@ -184,7 +184,7 @@ const ProductsPCsChema = new mongoose.Schema({ //schema of item displayed on fro
     },
 });
 
-module.exports = mongoose.model('ProductPC', ProductsPCsChema);//accessing a model
+module.exports.pc = mongoose.model('ProductPC', ProductsPCsChema, "PC");//accessing a model
 
 const ProductsMonitorsChema = new mongoose.Schema({ //schema of item displayed on fron page
     pathImages: {
@@ -269,7 +269,7 @@ const ProductsMonitorsChema = new mongoose.Schema({ //schema of item displayed o
     },
 });
 
-module.exports = mongoose.model('ProductAirConditioner', ProductsMonitorsChema);//accessing a model
+module.exports.monitor = mongoose.model('ProductAirConditioner', ProductsMonitorsChema);//accessing a model
 
 const ProductsVGAChema = new mongoose.Schema({ //schema of item displayed on fron page
     pathImages: {
@@ -350,7 +350,7 @@ const ProductsVGAChema = new mongoose.Schema({ //schema of item displayed on fro
     },
 });
 
-module.exports = mongoose.model('ProductVGAs', ProductsVGAChema);//accessing a model
+module.exports.vga = mongoose.model('ProductVGAs', ProductsVGAChema);//accessing a model
 
 const ProductsCamerasChema = new mongoose.Schema({ //schema of item displayed on fron page
     pathImages: {
@@ -423,4 +423,4 @@ const ProductsCamerasChema = new mongoose.Schema({ //schema of item displayed on
     },
 });
 
-module.exports = mongoose.model('ProductCamera', ProductsCamerasChema);//accessing a model
+module.exports.camera = mongoose.model('Camera', ProductsCamerasChema, 'Camera');//accessing a model

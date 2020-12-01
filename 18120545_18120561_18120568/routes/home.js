@@ -26,7 +26,7 @@ router.get('/contact-us', function(req, res, next) {
   res.render('contact-us', { title: 'Contact Us' });
 });
 
-router.get('/product-details', productDetailsController.index);
+router.get('/product-details/:id', productDetailsController.detail);
 router.get('/shop', shopController.index);
 
 

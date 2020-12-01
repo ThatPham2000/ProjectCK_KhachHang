@@ -1,8 +1,19 @@
-const productDetailsModel = require('../models/productDetailsModel');
+const {laptop, pc, monitor, vga, camera} = require('../models/productDetailsModel');
 
-exports.index = (req, res, next) => {
+exports.detail = (req, res, next) => {
     // Get books from model
-    const productDetails = productDetailsModel.list();
-    // Pass data to view to display list of books
-    res.render('product-details', {productDetails});
+    console.log(req.params.id);
+    laptop.findById(req.params.id)
+    .then(product =>{
+        // Pass data to view to display list of books
+        console.log(product.pathImages);
+        res.render('product-details', {
+            pathImages: product.pathImages,
+            price: product.price,
+            title: product.title
+        });
+        
+    })
+
+    
 };
