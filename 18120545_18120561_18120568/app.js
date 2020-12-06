@@ -19,9 +19,6 @@ const indexRouter = require('./routes/home');
 const usersRouter = require('./routes/users');
 
 
-const loginRouter = require('./routes/login');
-const signUpRouter = require('./routes/signup');
-
 const session = require('express-session');
 const flash = require('express-flash');
 

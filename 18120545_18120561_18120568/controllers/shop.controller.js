@@ -1,9 +1,11 @@
-const shopModel = require('../models/shopModel');
+const Product = require('../models/product.model');
 
-exports.index = (req, res, next) => {
-    // Get books from model
+exports.displayShop = (req, res, next) => {
     
-    // Pass data to view to display list of books
-    res.render('shop', {shop});
-    res.render('product-details', {shop});
+    Product.find({})
+    .then(products => {
+        res.render('shop', {products});
+   
+    })
+    
 };

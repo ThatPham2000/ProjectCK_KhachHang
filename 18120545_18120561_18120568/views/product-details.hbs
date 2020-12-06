@@ -147,7 +147,7 @@
 				
 					<div class="col-sm-5">
 						<div class="view-product">
-							<img src={{pathImages}} alt="" >
+							<img src={{pathImages.[0]}} alt="" >
 							<h3>ZOOM</h3>
 						</div>
 						<div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -155,19 +155,19 @@
 							  <!-- Wrapper for slides -->
 								<div class="carousel-inner">
 									<div class="item active">
-									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+										{{#each pathImages}}
+									  	<a href=""><img src={{this}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  	{{/each}}
 									</div>
 									<div class="item">
-									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  {{#each pathImages}}
+									  	<a href=""><img src={{this}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  	{{/each}}
 									</div>
 									<div class="item">
-									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  <a href=""><img src={{pathImages}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  {{#each pathImages}}
+									  	<a href=""><img src={{this}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									  	{{/each}}
 									</div>
 									
 								</div>

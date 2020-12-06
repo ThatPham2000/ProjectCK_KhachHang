@@ -1,11 +1,13 @@
-const {laptop, pc, monitor, vga, camera} = require('../models/productDetailsModel');
+const Product = require('../models/product.model');
 
 exports.index = (req, res, next) => {
     // Get books from model
 
     //check auth
 
-    laptop.find({})
+    Product.find({})
+    .skip(0)
+    .limit(9)
     .then(product =>{
         
         res.render('index', {
