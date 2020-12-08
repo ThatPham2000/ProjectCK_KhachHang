@@ -186,29 +186,53 @@
 				
 				<div class="pagination">
                         {{#if hasPrevPage}}
-                            <a href="/shop?page={{prevPage}}">&laquo;</a>
+                            {{#if Category}}
+								<a href="/shop?category={{Category}}&page={{prevPage}}">&laquo;</a>
+							{{else}}
+								<a href="/shop?page={{prevPage}}">&laquo;</a>
+							{{/if}}
                         {{/if}}
 
                         {{#if hasPrevPage1}}
-                            <a href="/shop?page={{prevPage1}}">{{prevPage1}}</a>
+                            {{#if Category}}
+								<a href="/shop?category={{Category}}&page={{prevPage1}}">{{prevPage1}}</a>
+							{{else}}
+								<a href="/shop?page={{prevPage1}}">{{prevPage1}}</a>
+							{{/if}}
                         {{/if}}
 
                         {{#if hasPrevPage2}}
-                            <a href="/shop?page={{prevPage2}}">{{prevPage2}}</a>
+                            {{#if Category}}
+								<a href="/shop?category={{Category}}&page={{prevPage2}}">{{prevPage2}}</a>
+							{{else}}
+								<a href="/shop?page={{prevPage2}}">{{prevPage2}}</a>
+							{{/if}}
                         {{/if}}
 
                         <a href="#" class="active">{{currentPage}}</a>
 
                         {{#if hasNextPage1}}
-                            <a href="/shop?page={{nextPage1}}">{{nextPage1}}</a>
+                            {{#if Category}}
+								<a href="/shop?category={{Category}}&page={{nextPage1}}">{{nextPage1}}</a>
+							{{else}}
+								<a href="/shop?page={{nextPage1}}">{{nextPage1}}</a>
+							{{/if}}
                         {{/if}}
 
                         {{#if hasNextPage2}}
-                            <a href="/shop?page={{nextPage2}}">{{nextPage2}}</a>
+                            {{#if Category}}
+								<a href="/shop?category={{Category}}&page={{nextPage2}}">{{nextPage2}}</a>
+							{{else}}
+								<a href="/shop?page={{nextPage2}}">{{nextPage2}}</a>
+							{{/if}}
                         {{/if}}
 
                         {{#if hasNextPage}}
-                            <a href="/shop?page={{nextPage}}">&raquo;</a>
+                            {{#if Category}}
+								<a href="/shop?category={{Category}}&page={{nextPage}}">&raquo;</a>
+							{{else}}
+								<a href="/shop?page={{nextPage}}">&raquo;</a>
+							{{/if}}
                         {{/if}}
                     </div>
 				

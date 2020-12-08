@@ -9,7 +9,16 @@ module.exports.index = async(req, res, next) => {
 
 module.exports.listProductPagination = async(req, res) => {
     const page = +req.query.page || 1;
-    const pagination = await ProductService.listProdPagination(page, 12);
+    const Category = req.query.category;
+    const Name = req.query.name;
+    const Query = {};
+    if (Category) {
+        Query.category = Category;
+    }
+    if (Name) {
+        Query.name = Name;
+    }
+    const pagination = await ProductService.listProdPagination(Query, page, 12);
     res.render('shop', {
         title: 'Shop',
         products: pagination.docs,
@@ -30,5 +39,7 @@ module.exports.listProductPagination = async(req, res) => {
         hasNextPage2: (pagination.page + 2 < pagination.totalPages ? true : false),
         nextPage2: pagination.page + 2,
 
+        //Category
+        Category: Category
     })
 }

@@ -4,8 +4,8 @@ module.exports.listAllProduct = async() => {
     return await ProdMongoose.find({});
 }
 
-module.exports.listProdPagination = async(pageNumber, itemPerPage) => {
-    let listProd = await ProdMongoose.paginate({}, {
+module.exports.listProdPagination = async(filter, pageNumber, itemPerPage) => {
+    let listProd = await ProdMongoose.paginate(filter, {
         page: pageNumber,
         limit: itemPerPage,
     });
