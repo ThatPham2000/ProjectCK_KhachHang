@@ -27,7 +27,6 @@ router.get('/contact-us', function(req, res, next) {
 });
 
 router.get('/product-details/:id', productDetailsController.detail);
-router.get('/shop', shopController.displayShop);
 
 
 module.exports = router;

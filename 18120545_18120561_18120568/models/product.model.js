@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const mongoosePaginate = require('mongoose-paginate-v2');
 const slug = require("mongoose-slug-updater");
  
 const enumType = {
@@ -113,12 +113,17 @@ const productSchema = mongoose.Schema({
       default: 0,
   }
 });
- 
+
 // Add plugins
 productSchema.set("timestamps", true);
+
 mongoose.plugin(slug);
+
+productSchema.plugin(mongoosePaginate);
  
 
 const productModel = mongoose.model('products', productSchema,'products');
 
 module.exports = productModel;
+
+
