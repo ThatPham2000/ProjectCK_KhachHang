@@ -13,16 +13,18 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+
 const passport = require('passport');
 
 const indexRouter = require('./routes/home');
 const usersRouter = require('./routes/users');
+const shopRouter = require('./routes/shop');
 
 
 const session = require('express-session');
 const flash = require('express-flash');
 
-const hbs = require('hbs');
+//const hbs = require('hbs');
 
 const MongoDBStore = require('connect-mongodb-session')(session);
 
@@ -30,11 +32,13 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const buyer = require('./routes/buyer');
 const Cart = require('./models/cart.model');
 const User = require('./models/user.model');
+const { handlebars } = require('hbs');
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set('view engine', "hbs");
+
 
 
 
@@ -47,11 +51,11 @@ app.use(flash());
 app.use(cookieParser(seKey));
 app.use(express.static('public'));
 
-hbs.registerHelper('select', function(selected, options) {
-  return options.fn(this).replace(
-      new RegExp(' value=\"' + selected + '\"'),
-      '$& selected="selected"');
-});
+// hbs.registerHelper('select', function(selected, options) {
+//   return options.fn(this).replace(
+//       new RegExp(' value=\"' + selected + '\"'),
+//       '$& selected="selected"');
+// });
 
 app.use(
     session({
@@ -96,6 +100,7 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/buyer', buyer);
 app.use('/user', usersRouter);
+app.use('/shop',shopRouter);
 //app.use('/login', loginRouter);
 //app.use('/signup', signUpRouter);
 
