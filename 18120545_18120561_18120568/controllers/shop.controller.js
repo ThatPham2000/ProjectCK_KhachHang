@@ -1,15 +1,15 @@
 const ProductService = require('../models/ProductService.js');
 const Product = require("../models/product.model");
 const ITEM_PER_PAGE = 12;
-module.exports.index = async(req, res,next) => {
+module.exports.index = async(req, res, next) => {
     const products = await ProductService.listAllProduct();
 
-    res.render('shop',{title: "Products", subtitle: "List product", products});
+    res.render('shop', { title: "Products", subtitle: "List product", products });
 }
 
 module.exports.listProductPagination = async(req, res) => {
     const page = +req.query.page || 1;
-    const pagination = await ProductService.listProdPagination(page,12);
+    const pagination = await ProductService.listProdPagination(page, 12);
     res.render('shop', {
         title: 'Shop',
         products: pagination.docs,
@@ -32,4 +32,3 @@ module.exports.listProductPagination = async(req, res) => {
 
     })
 }
-
