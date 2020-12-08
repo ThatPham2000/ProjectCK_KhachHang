@@ -14,106 +14,27 @@
 				<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-									<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-									Sportswear
-								</a>
-							</h4>
-						</div>
-						<div id="sportswear" class="panel-collapse collapse">
-							<div class="panel-body">
-								<ul>
-									<li><a href="">Nike </a></li>
-									<li><a href="">Under Armour </a></li>
-									<li><a href="">Adidas </a></li>
-									<li><a href="">Puma</a></li>
-									<li><a href="">ASICS </a></li>
-								</ul>
-							</div>
+							<h4 class="panel-title"><a href="/shop?category=PC">PC</a></h4>
 						</div>
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordian" href="#mens">
-									<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-									Mens
-								</a>
-							</h4>
-						</div>
-						<div id="mens" class="panel-collapse collapse">
-							<div class="panel-body">
-								<ul>
-									<li><a href="">Fendi</a></li>
-									<li><a href="">Guess</a></li>
-									<li><a href="">Valentino</a></li>
-									<li><a href="">Dior</a></li>
-									<li><a href="">Versace</a></li>
-									<li><a href="">Armani</a></li>
-									<li><a href="">Prada</a></li>
-									<li><a href="">Dolce and Gabbana</a></li>
-									<li><a href="">Chanel</a></li>
-									<li><a href="">Gucci</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordian" href="#womens">
-									<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-									Womens
-								</a>
-							</h4>
-						</div>
-						<div id="womens" class="panel-collapse collapse">
-							<div class="panel-body">
-								<ul>
-									<li><a href="">Fendi</a></li>
-									<li><a href="">Guess</a></li>
-									<li><a href="">Valentino</a></li>
-									<li><a href="">Dior</a></li>
-									<li><a href="">Versace</a></li>
-								</ul>
-							</div>
+							<h4 class="panel-title"><a href="/shop?category=laptop">Laptop</a></h4>
 						</div>
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title"><a href="#">Kids</a></h4>
+							<h4 class="panel-title"><a href="/shop?category=mobile">Thiết bị di động</a></h4>
 						</div>
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title"><a href="#">Fashion</a></h4>
+							<h4 class="panel-title"><a href="/shop?category=Network equipment - Security">Thiết bị mạng và bảo mật</a></h4>
 						</div>
 					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title"><a href="#">Households</a></h4>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title"><a href="#">Interiors</a></h4>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title"><a href="#">Clothing</a></h4>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title"><a href="#">Bags</a></h4>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title"><a href="#">Shoes</a></h4>
+							<h4 class="panel-title"><a href="/shop?category=Components">Linh kiện</a></h4>
 						</div>
 					</div>
 				</div><!--/category-productsr-->
@@ -186,53 +107,53 @@
 				
 				<div class="pagination">
                         {{#if hasPrevPage}}
-                            {{#if Category}}
-								<a href="/shop?category={{Category}}&page={{prevPage}}">&laquo;</a>
-							{{else}}
-								<a href="/shop?page={{prevPage}}">&laquo;</a>
-							{{/if}}
+                        {{#if Category}}
+                            <a href="/shop?category={{Category}}&page={{prevPage}}">&laquo;</a>
+                        {{else}}
+                            <a href="/shop?page={{prevPage}}">&laquo;</a>
+                        {{/if}}
                         {{/if}}
 
                         {{#if hasPrevPage1}}
-                            {{#if Category}}
-								<a href="/shop?category={{Category}}&page={{prevPage1}}">{{prevPage1}}</a>
-							{{else}}
-								<a href="/shop?page={{prevPage1}}">{{prevPage1}}</a>
-							{{/if}}
+                        {{#if Category}}
+                            <a href="/shop?category={{Category}}&page={{prevPage1}}">{{prevPage1}}</a>
+                        {{else}}
+                            <a href="/shop?page={{prevPage1}}">{{prevPage1}}</a>
+                        {{/if}}
                         {{/if}}
 
                         {{#if hasPrevPage2}}
-                            {{#if Category}}
-								<a href="/shop?category={{Category}}&page={{prevPage2}}">{{prevPage2}}</a>
-							{{else}}
-								<a href="/shop?page={{prevPage2}}">{{prevPage2}}</a>
-							{{/if}}
+                        {{#if Category}}
+                            <a href="/shop?category={{Category}}&page={{prevPage2}}">{{prevPage2}}</a>
+                        {{else}}
+                            <a href="/shop?page={{prevPage2}}">{{prevPage2}}</a>
+                        {{/if}}
                         {{/if}}
 
                         <a href="#" class="active">{{currentPage}}</a>
 
                         {{#if hasNextPage1}}
-                            {{#if Category}}
-								<a href="/shop?category={{Category}}&page={{nextPage1}}">{{nextPage1}}</a>
-							{{else}}
-								<a href="/shop?page={{nextPage1}}">{{nextPage1}}</a>
-							{{/if}}
+                        {{#if Category}}
+                            <a href="/shop?category={{Category}}&page={{nextPage1}}">{{nextPage1}}</a>
+                        {{else}}
+                            <a href="/shop?page={{nextPage1}}">{{nextPage1}}</a>
+                        {{/if}}
                         {{/if}}
 
                         {{#if hasNextPage2}}
-                            {{#if Category}}
-								<a href="/shop?category={{Category}}&page={{nextPage2}}">{{nextPage2}}</a>
-							{{else}}
-								<a href="/shop?page={{nextPage2}}">{{nextPage2}}</a>
-							{{/if}}
+                        {{#if Category}}
+                            <a href="/shop?category={{Category}}&page={{nextPage2}}">{{nextPage2}}</a>
+                        {{else}}
+                            <a href="/shop?page={{nextPage2}}">{{nextPage2}}</a>
+                        {{/if}}
                         {{/if}}
 
                         {{#if hasNextPage}}
-                            {{#if Category}}
-								<a href="/shop?category={{Category}}&page={{nextPage}}">&raquo;</a>
-							{{else}}
-								<a href="/shop?page={{nextPage}}">&raquo;</a>
-							{{/if}}
+                        {{#if Category}}
+                            <a href="/shop?category={{Category}}&page={{nextPage}}">&raquo;</a>
+                        {{else}}
+                            <a href="/shop?page={{nextPage}}">&raquo;</a>
+                        {{/if}}
                         {{/if}}
                     </div>
 				
