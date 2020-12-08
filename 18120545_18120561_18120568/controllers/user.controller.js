@@ -1,9 +1,17 @@
 const jwt =  require('jsonwebtoken')
 const bcrypt = require('bcrypt');
 const randomstring = require("randomstring");
+const fs = require("fs")
+const formidable = require("formidable");
 
 const User = require('../models/user.model');
+const UserSevice = require('../models/user.Service');
 const {sendEmail} =  require('../config/nodemailer');
+const upload = require('../config/multer')
+const cloudinary = require('../config/cloudinary');
+const { fields } = require('../config/multer');
+
+
 
 const tokenLife = process.env.TOKEN_LIFE
 const jwtKey = process.env.JWT_KEY
@@ -39,6 +47,7 @@ module.exports.getOne = async (req, res) => {
             res.render('user', {
                     name: user.name,
                     email: user.email,
+                    image: user.image,
                     phone: phone,
                     sex: user.sex,
                     birthday: user.birthday,
@@ -57,19 +66,63 @@ module.exports.getOne = async (req, res) => {
     })
 }
 
-exports.saveInfor = (req, res) =>{
+exports.saveInfor = async (req, res, next) =>{
 
-    const {name, email, phone, sex, birthday} = req.body;
-    console.log(req.body.birthday);
-    User.findOne({email: email})
-    .then(user => {
+    const form = formidable({multiples : true});
 
-        user.name = name;
-        user.sex = sex;
-        user.birthday = birthday;
-        user.save();
-        res.redirect('/user/account/profile');
+    form.parse(req, async (err, fields, files) => {
+        if (err){
+            return next(err);
+        }
+
+        const {name, email, image,  phone, sex, birthday} = fields;
+        
+        var newImage;
+        var pathHost;
+        let ret;
+
+        const fileUpload = files.image;
+        
+        if (fileUpload && fileUpload.size > 0){
+            const filepath = fileUpload.path.split('\\').pop() + '.' + fileUpload.name.split('.').pop();
+            
+            fs.renameSync(fileUpload.path, __dirname + '/../public/uploads/' + filepath)
+            pathHost =  __dirname + '/../public/uploads/' + filepath;
+            newImage  = "/uploads/" + filepath;
+
+            ret = await cloudinary.uploadSingleAvatar(pathHost);
+           
+            if (ret) {
+                const user = await UserSevice.FindCloudinaryEmail(email);
+                
+                if (user.cloudinary_id){
+                    await cloudinary.destroySingle(user.cloudinary_id);
+                }
+                
+                
+            }
+        }
+        
+        
+
+        User.findOne({email: email})
+        .then(user => {
+            user.name = name;
+            user.sex = sex;
+
+
+            if (ret){
+                user.image = ret.url;
+                user.cloudinary_id = ret.id;
+            }
+
+            user.birthday = birthday;
+            user.save();
+            res.redirect('/user/account/profile');
+    
+        })
     })
+    
 
 }
 

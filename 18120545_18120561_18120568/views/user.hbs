@@ -1,5 +1,4 @@
-
-<section class="user-profile section">
+<body class="user-profile section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 offset-md-1 col-lg-3 offset-lg-0">
@@ -7,11 +6,15 @@
 					<!-- User Widget -->
 					<div class="widget user">
 						<!-- User Image -->
-						<div class="image ">
+						<div class="image">
+							{{#if image}}
+							<img src="{{image}}"  alt="" class="">
+							{{else}}
 							<img src="https://sieupet.com/sites/default/files/pictures/images/1-1473150685951-5.jpg"  alt="" class="">
+							{{/if}}
 						</div>
 						<!-- User Name -->
-						<h5 class="text-center">Samanta Doe</h5>
+						<h5 class="text-center">{{name}}</h5>
 					</div>
 					<!-- Dashboard Links -->
 					<div class="widget dashboard-links">
@@ -35,7 +38,7 @@
 					<div class="col-lg-6 col-md-6">
 						<div class="widget personal-info">
 							<h3 class="widget-header user">Edit Personal Information</h3>
-							<form method = 'POST' action="/user/account/profile">
+							<form action="/user/account/profile" method = 'POST' enctype="multipart/form-data">
 								<!-- First Name -->
 								<div class="form-group">
 									<label for="first-name">Full Name</label>
@@ -49,7 +52,7 @@
 								<!-- File chooser -->
 								<div class="form-group choose-file d-inline-flex">
 									<i class="fa fa-user text-center px-3"></i>
-									<input type="file" class="form-control-file mt-2 pt-1" id="input-file">
+									<input type="file" class="form-control-file mt-2 pt-1" id="input-file" name= 'image' >
 								 </div>
 								<!-- Comunity Name -->
 								<div class="form-group">
@@ -76,7 +79,7 @@
 								</div>
 								
 								<!-- Submit button -->
-								<button type="submit"  class="btn btn-transparent">Save My Changes</button>
+								<button type="submit" class="btn btn-transparent">Save My Changes</button>
 							</form>
 						</div>
 					</div>
@@ -137,4 +140,5 @@
 			</div>
 		</div>
 	</div>
-</section>
+	
+</body>

@@ -26,7 +26,7 @@ module.exports.auth = async (req, res, next) =>{
             else{
                 //req.userData = result;
                 
-                next();
+                return next();
             }
         }
         

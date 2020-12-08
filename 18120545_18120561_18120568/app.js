@@ -6,8 +6,6 @@ const seKey = process.env.SESSION_SECRET
 const connectDB = require('./config/db')
 
 connectDB();
-
-
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
