@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    image:{
+        type: String,
+        default: ''
+    },
     roles: {
         type: String,
         default: 'user'
@@ -48,6 +52,10 @@ const userSchema = new mongoose.Schema({
     cart: {
         type: Object
     },
+    cloudinary_id: {
+        type: String,
+        default: "",
+      },
 }); 
 
 module.exports = mongoose.model('User', userSchema)
