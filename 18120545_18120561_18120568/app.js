@@ -22,7 +22,7 @@ const shopRouter = require('./routes/shop');
 const session = require('express-session');
 const flash = require('express-flash');
 
-//const hbs = require('hbs');
+const hbs = require('hbs');
 
 const MongoDBStore = require('connect-mongodb-session')(session);
 
@@ -48,13 +48,14 @@ app.use(flash());
 
 app.use(cookieParser(seKey));
 app.use(express.static('public'));
+ hbs.registerHelper('select', function(selected, options) {
+  return options.fn(this).replace(
+       new RegExp(' value=\"' + selected + '\"'),
+       '$& selected="selected"');
+ });
 
-// hbs.registerHelper('select', function(selected, options) {
-//   return options.fn(this).replace(
-//       new RegExp(' value=\"' + selected + '\"'),
-//       '$& selected="selected"');
-// });
 
+ 
 app.use(
     session({
       secret:  seKey, 
