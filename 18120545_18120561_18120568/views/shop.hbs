@@ -73,36 +73,42 @@
 			<div class="features_items"><!--features_items-->
 				<h2 class="title text-center">Features Items</h2>
 				{{#each products}}
-					<div class="col-sm-4">
-					<div class="product-image-wrapper">
-						<div class="single-products">
-							<div class="productinfo text-center">
-								<img src="{{images.[0]}}" alt="" />
-								<h2>{{price}} VND</h2>
-								<p>{{name}}</p>
-								
-								<div>
-									<a href="#" class="btn btn-default add-to-cart col-xs-4"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-							</div>
-							<div class="product-overlay">
-								<div class="overlay-content">
-									<h2>{{price}} VND</h2>
-									<p>{{name}}</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									<a href="/product-details/{{_id}}" class="btn btn-default add-to-cart"><i class="fa fa-search-minus"></i>Detail</a>
-								</div>
-							</div>
-						</div>
-						<div class="choose">
-							<ul class="nav nav-pills nav-justified">
-								<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-								<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				{{/each}}
+                        <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="{{images.[0]}}" alt="" style="border: 1px solid #ddd;  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);"/>
+                                        <h2>{{price}}</h2>
+                                        <p style="width:600px;overflow:hidden;height:50px;line-height:50px;">{{name}}</p>
+                                       
+									
+									        <a href="/product-details" class="btn btn-default add-to-cart"><i class="fa fa-search-minus"></i>Detail</a>
+								        
+                                            <a href="#" class="btn btn-default add-to-cart "><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        
+                                    </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>{{price}}</h2>
+                                            <p>{{name}}</p>
+                                            <div class = 'd-flex justify-content-center'>
+									
+									        <a href="/product-details/{{_id}}" class="btn btn-default add-to-cart "><i class="fa fa-search-minus"></i>Detail</a>
+								        
+                                            <a href="#" class="btn btn-default add-to-cart "><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="choose">
+                                <ul class="nav nav-pills nav-justified">
+                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
 				
 				
 				
