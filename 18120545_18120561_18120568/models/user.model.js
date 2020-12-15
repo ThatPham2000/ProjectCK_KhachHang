@@ -47,15 +47,21 @@ const userSchema = new mongoose.Schema({
     },
     address: {
         type: String,
-        require: false
+        default: "",
     },
-    cart: {
-        type: Object
+    city: {
+        type: String,
+        default: "",
+    },
+    district: {
+        type: String,
+        default: "",
     },
     cloudinary_id: {
         type: String,
         default: "",
       },
+    
 }); 
 
 module.exports = mongoose.model('User', userSchema)

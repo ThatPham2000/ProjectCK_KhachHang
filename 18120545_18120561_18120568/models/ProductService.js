@@ -1,3 +1,4 @@
+const { findOneAndDelete } = require("./cart.model");
 const ProdMongoose = require("./product.model");
 
 module.exports.listAllProduct = async() => {
@@ -11,3 +12,8 @@ module.exports.listProdPagination = async(filter, pageNumber, itemPerPage) => {
     });
     return listProd;
 };
+
+module.exports.findbySlugname = async(sl) =>{
+
+    return ProdMongoose.findOne({slugName: sl});
+}

@@ -68,7 +68,7 @@ module.exports.getOne = async (req, res) => {
 
 exports.saveInfor = async (req, res, next) =>{
 
-    const form = formidable({multiples : true});
+    const form = formidable({multiples : false});
 
     form.parse(req, async (err, fields, files) => {
         if (err){
@@ -82,7 +82,7 @@ exports.saveInfor = async (req, res, next) =>{
         let ret;
 
         const fileUpload = files.image;
-        
+        console.log(fileUpload);
         if (fileUpload && fileUpload.size > 0){
             const filepath = fileUpload.path.split('\\').pop() + '.' + fileUpload.name.split('.').pop();
             

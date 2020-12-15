@@ -9,12 +9,12 @@ router.route('/account/profile')
     .get(authorize.auth, user.getOne)
     .post(authorize.auth, user.saveInfor);
 
-router.get('/account/logout', user.logout);
+router.get('/account/logout', authorize.auth, user.logout);
 
 
-router.post('/account/changePassword', user.changePassword );
+router.post('/account/changePassword', authorize.auth, user.changePassword );
 
-router.post('/account/changePhone', user.changeTel);
+router.post('/account/changePhone', authorize.auth, user.changeTel);
 
 
 module.exports = router;

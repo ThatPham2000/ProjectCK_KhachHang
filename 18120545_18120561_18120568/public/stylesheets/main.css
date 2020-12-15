@@ -1682,7 +1682,6 @@ h2.title {
 
 .cart_quantity_input {
     color: #696763;
-    float: left;
     font-size: 16px;
     text-align: center;
     font-family: 'Roboto', sans-serif;
@@ -1808,8 +1807,9 @@ textarea {
     border-radius: 0;
     color: #FFFFFF;
     margin-top: 18px;
+    width: 100px;
     border: none;
-    padding: 5px 15px;
+   
 }
 
 .update {
@@ -1924,10 +1924,10 @@ textarea {
     width: 47%
 }
 
-.shopper-info>form>input,
-.form-two>form>select,
-.form-two>form>input,
-.form-one>form>input {
+.shopper-info>input,
+.form-two>select,
+.form-two>input,
+.form-one>input {
     background: #F0F0E9;
     border: 0 none;
     margin-bottom: 10px;
@@ -1936,7 +1936,7 @@ textarea {
     font-weight: 300
 }
 
-.form-two>form>select {
+.form-two>rm>select {
     padding: 10px 5px
 }
 

@@ -6,7 +6,7 @@ module.exports.auth = async (req, res, next) =>{
 
     if (!req.isAuthenticated()){
 
-        res.redirect('/');
+        res.redirect('/buyer/login');
         return;
     }
     let id = req.session.passport.user;
@@ -15,7 +15,7 @@ module.exports.auth = async (req, res, next) =>{
 
         //console.log(result);
         if (!result){
-            res.redirect('/');
+            res.redirect('/buyer/login');
             return;   
         }
         else{

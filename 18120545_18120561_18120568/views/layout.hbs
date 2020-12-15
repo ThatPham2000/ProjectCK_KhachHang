@@ -14,6 +14,7 @@
 	<link href="/stylesheets/animate.css" rel="stylesheet">
 	<link href="/stylesheets/main.css" rel="stylesheet">
 	<link href="/stylesheets/responsive.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -98,11 +99,20 @@
 
 
 								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-
+								<li>
+								
+								 <a href="/cart" class="btn cart ">
+									<i class="fa fa-shopping-cart"></i>Cart
+									{{#if session.cart.totalQuantity}}
+										<span class="cart-count-add">({{session.cart.totalQuantity}})</span>
+									{{else}}
+										<span class="cart-count-add">(0)</span>
+									{{/if}}
+									</a>
+								</li>
 								{{#if session.isVerify}}
 								<li class="dropdown-acc"><a href="/user/account/profile"><i class="fa fa-user"></i>
-										{{name}}</a></a>
+										{{user.name}}</a></a>
 									<ul role="menu" class="sub-menu-acc">
 										<li><a href="/user/account/profile">Information</a></li>
 										<li><a href="/user/account/logout">Log out</a></li>

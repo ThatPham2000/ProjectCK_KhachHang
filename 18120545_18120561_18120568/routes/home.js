@@ -16,12 +16,7 @@ router.get('/blog-single', function(req, res, next) {
 router.get('/blog', function(req, res, next) {
   res.render('blog', { title: 'Blog' });
 });
-router.get('/cart', function(req, res, next) {
-  res.render('cart', { title: 'Cart' });
-});
-router.get('/checkout', function(req, res, next) {
-  res.render('checkout', { title: 'Checkout' });
-});
+
 router.get('/contact-us', function(req, res, next) {
   res.render('contact-us', { title: 'Contact Us' });
 });

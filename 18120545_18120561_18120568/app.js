@@ -17,7 +17,8 @@ const passport = require('passport');
 const indexRouter = require('./routes/home');
 const usersRouter = require('./routes/users');
 const shopRouter = require('./routes/shop');
-
+const cartRouter = require('./routes/cart');
+const checkoutRouter = require('./routes/checkout');
 
 const session = require('express-session');
 const flash = require('express-flash');
@@ -30,6 +31,8 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const buyer = require('./routes/buyer');
 const Cart = require('./models/cart.model');
 const User = require('./models/user.model');
+
+const {initCart} = require('./models/cart.service');
 const { handlebars } = require('hbs');
 var app = express();
 
@@ -75,23 +78,12 @@ app.use(passport.session());
 
 
 app.use((req, res, next) => {
-  var cart = new Cart(req.session.cart ? req.session.cart : {});
+  var cart = new Cart(req.session.cart ? req.session.cart : initCart);
   
   req.session.cart = cart;
+  
   res.locals.session = req.session;
-
-
-  if (req.session.isVerify === true && req.isAuthenticated()){
-
-    User.findById(req.session.passport.user)
-    .then(user => {
-
-      if (user){
-        //res.locals.name = user.name;
-        app.locals.name = user.name;
-      }
-    })
-  }
+  req.app.locals.user = req.user || null;
 
   next();
 });
@@ -100,6 +92,8 @@ app.use('/', indexRouter);
 app.use('/buyer', buyer);
 app.use('/user', usersRouter);
 app.use('/shop',shopRouter);
+app.use('/cart',cartRouter);
+app.use('/checkout',checkoutRouter)
 //app.use('/login', loginRouter);
 //app.use('/signup', signUpRouter);
 
