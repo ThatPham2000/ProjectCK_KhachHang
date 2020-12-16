@@ -68,25 +68,26 @@ module.exports.getOne = async (req, res) => {
 
 exports.saveInfor = async (req, res, next) =>{
 
-    const form = formidable({multiples : false});
+    const form =  formidable({multiples : false});
 
-    form.parse(req, async (err, fields, files) => {
+    await form.parse(req, async (err, fields, files) => {
         if (err){
             return next(err);
         }
 
-        const {name, email, image,  phone, sex, birthday} = fields;
+        const {name, email, image,  phone, sex, birthday} = await fields;
         
         var newImage;
         var pathHost;
         let ret;
 
+        console.log(files);
         const fileUpload = files.image;
-        console.log(fileUpload);
+      
         if (fileUpload && fileUpload.size > 0){
             const filepath = fileUpload.path.split('\\').pop() + '.' + fileUpload.name.split('.').pop();
             
-            fs.renameSync(fileUpload.path, __dirname + '/../public/uploads/' + filepath)
+            await fs.renameSync(fileUpload.path, __dirname + '/../public/uploads/' + filepath)
             pathHost =  __dirname + '/../public/uploads/' + filepath;
             newImage  = "/uploads/" + filepath;
 
@@ -142,11 +143,11 @@ exports.changePassword = (req, res) =>{
             })
         }
         else{
-            console.log(password);
+    
             
                 bcrypt.compare(password, user.password)
                 .then(result =>{
-                    console.log(result);
+                
                     if (!result) {
                         req.session.error = 'Wrong password';
                         return res.redirect('/user/account/profile');
@@ -220,10 +221,9 @@ exports.changeTel = (req, res) =>{
 
 //log out
 exports.logout = (req, res, next) => {
-    if (req.session.cart) {
-      req.session.cart = null;
-    }
-    req.session.isVerify = false;
+   
+    req.session.destroy();;
+   
     req.logout();
     res.redirect("/");
   };

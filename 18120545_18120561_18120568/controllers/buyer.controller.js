@@ -71,7 +71,7 @@ module.exports.postForgot = async (req, res) =>{
                 const token = jwt.sign( {_id: user._id}, jwtKey, {
                             expiresIn: 86400,
                 });
-                console.log(user.passwordReset);
+                
                 sendEmail(req, user.email, user.passwordReset, 'recovery');
                    
                 

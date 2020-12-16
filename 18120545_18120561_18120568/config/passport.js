@@ -2,7 +2,10 @@
 var User = require('../models/user.model');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt');
+
 const {sendEmail} =  require('../config/nodemailer');
+const cartController = require("../controllers/cart.controller");
+const cartService = require("../models/cart.service")
 const jwt =  require('jsonwebtoken');
 const randomstring = require("randomstring");
 
@@ -33,7 +36,7 @@ module.exports = function(passport){
         passwordField: 'password',
         passReqToCallback: true 
       }, function(req, email, password, done) {
-        User.findOne({ email: email }, function(err, user) {
+        User.findOne({ email: email }, async(err, user) =>{
           if (err) {
             return done(err);
           }
@@ -50,16 +53,23 @@ module.exports = function(passport){
           }
           req.session.isVerify = true;
 
-          bcrypt.compare(password, user.password, function(err, result) {
+          bcrypt.compare(password, user.password, async(err, result) =>{
             if (err) {
               return done(err);
             }
-            console.log('acc : ' + user.email + ' ' + user.password + ' ' + password, result);
             if (!result) {
               return done(null, false, {
                 message: 'Wrong username or password.'
             });
             }
+            console.log('acc : ' + user.email + ' ' + user.password + ' ' + password, result);
+
+    
+            await cartController.mergeCart(user._id, req.session.cart);
+
+            let newCart = await cartService.findCartbyUserId(user._id);
+            req.session.cart = newCart;
+            
             
             return done(null, user);
           });

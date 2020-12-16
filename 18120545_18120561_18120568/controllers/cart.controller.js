@@ -210,6 +210,7 @@ module.exports.putUpdate = async (req, res, next) => {
             cart.totalCost = cart.totalCost .substr(1);
           }
           item.quantity += bias;
+         
           tmp = parsePrice(item.total);
 
           tmp += bias * parsePrice(item.price);
@@ -243,6 +244,68 @@ module.exports.putUpdate = async (req, res, next) => {
       user: "Update cart successful!",
       data: cart,
     });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      msg: "ValidatorError",
+      user: error.message,
+    });
+  }
+};
+
+
+
+module.exports.mergeCart = async ( userId, sessionCart) => {
+  try {
+    let cart = {};
+
+    const userCart = await cartService.findIdbyStatus(userId, "waiting");
+
+    if (!userCart) {
+      sessionCart.userId = userId;
+      cart = await Cart.create(sessionCart);
+    } 
+    else if (userCart.totalQuantity === 0) {
+      sessionCart.userId = userId;
+      cart = await cartService.updateOne(userId, sessionCart)
+      
+    } else {
+      cart = userCart;
+
+      const merCartItem = [...userCart.items, ...sessionCart.items];
+      const slugName = Array.from(
+        new Set(merCartItem.map((item) => item.slugName))
+      );
+
+      const items = slugName.map((slug) => {
+        const uniSlug = merCartItem.filter((it) => it.slugName === slug);
+        const staUniSlug = uniSlug.map((uni) => parseInt(uni.quantity));
+        const quanti = staUniSlug.reduce((it1, it2) => it1 + it2, 0);
+
+        uniSlug[0].quantity = quanti;
+        uniSlug[0].total = quanti * parsePrice(uniSlug[0].price);
+
+        return uniSlug[0];
+      });
+
+      cart.items = items;
+      cart.totalQuantity += sessionCart.totalQuantity;
+
+
+      var tmp = parsePrice(cart.totalCost);
+      var tmp2 = parsePrice(sessionCart.totalCost); 
+      var sum = tmp + tmp2;
+
+      cart.totalCost = parseIntToPrice(sum.toString());
+      while(cart.totalCost .charAt(0) === '0'){
+        cart.totalCost = cart.totalCost .substr(1);
+      }
+
+      await cartService.updateOne(userId, cart);
+      
+    }
+
+    return cart;
   } catch (error) {
     console.log(error);
     res.status(500).json({
