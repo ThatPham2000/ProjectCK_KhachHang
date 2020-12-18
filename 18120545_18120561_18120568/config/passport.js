@@ -64,13 +64,12 @@ module.exports = function(passport){
             }
             console.log('acc : ' + user.email + ' ' + user.password + ' ' + password, result);
 
-    
             await cartController.mergeCart(user._id, req.session.cart);
 
-            let newCart = await cartService.findCartbyUserId(user._id);
+            const newCart = await cartService.findIdbyStatus(user._id, "waiting");
             req.session.cart = newCart;
-            
-            
+     
+
             return done(null, user);
           });
         });

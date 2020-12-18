@@ -141,7 +141,7 @@ module.exports.putUpdate = async (req, res, next) => {
   
 
   const { bias } = req.body;
-  console.log(bias)
+
   const { slugName } = req.params;
   const { user } = req;
   let { cart } = req.session;
@@ -174,18 +174,20 @@ module.exports.putUpdate = async (req, res, next) => {
           
           return null;
         }
+   
 
         if (item.quantity === 1 && bias === -1) {
+
           cart.totalQuantity += bias;
           
           var tmp = parsePrice(cart.totalCost);
           tmp += bias * parsePrice(item.price);
 
           cart.totalCost = parseIntToPrice(tmp.toString());
-          while(cart.totalCost .charAt(0) === '0'){
+          while(cart.totalCost.charAt(0) === '0'){
             cart.totalCost = cart.totalCost .substr(1);
           }
-
+          console.log(cart.totalCost);
           
           item.quantity += bias;
 
@@ -196,11 +198,11 @@ module.exports.putUpdate = async (req, res, next) => {
           while(item.total .charAt(0) === '0'){
             item.total = cart.totalCost .substr(1);
           }
-         
+
 
           return null;
         } 
-        else { //add
+        else { 
           cart.totalQuantity += bias;
           var tmp = parsePrice(cart.totalCost);
           tmp += bias * parsePrice(item.price);
@@ -278,17 +280,21 @@ module.exports.mergeCart = async ( userId, sessionCart) => {
       );
 
       const items = slugName.map((slug) => {
-        const uniSlug = merCartItem.filter((it) => it.slugName === slug);
+        var uniSlug = merCartItem.filter((it) => it.slugName === slug);
         const staUniSlug = uniSlug.map((uni) => parseInt(uni.quantity));
         const quanti = staUniSlug.reduce((it1, it2) => it1 + it2, 0);
-
+        
         uniSlug[0].quantity = quanti;
-        uniSlug[0].total = quanti * parsePrice(uniSlug[0].price);
-
+        uniSlug[0].total = parseIntToPrice( (quanti * parsePrice(uniSlug[0].price)).toString());
+        while(uniSlug[0].total .charAt(0) === '0'){
+          uniSlug[0].total = uniSlug[0].total.substr(1);
+        }
+       
         return uniSlug[0];
       });
 
       cart.items = items;
+
       cart.totalQuantity += sessionCart.totalQuantity;
 
 
@@ -298,13 +304,13 @@ module.exports.mergeCart = async ( userId, sessionCart) => {
 
       cart.totalCost = parseIntToPrice(sum.toString());
       while(cart.totalCost .charAt(0) === '0'){
-        cart.totalCost = cart.totalCost .substr(1);
+        cart.totalCost = cart.totalCost.substr(1);
       }
 
       await cartService.updateOne(userId, cart);
       
     }
-
+    
     return cart;
   } catch (error) {
     console.log(error);

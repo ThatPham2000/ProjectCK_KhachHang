@@ -5,21 +5,21 @@ cloudinary.config({
 });
 
 module.exports.uploadSingleAvatar = (file) => {
-    return new Promise((resolve) => {
-      cloudinary.uploader
-        .upload(file, {
-          folder: "user",
-        })
-        .then((result) => {
-          if (result) {
-            resolve({
-              url: result.secure_url,
-              id: result.public_id,
-            });
-          }
-        });
-    });
-  };
+  return new Promise((resolve) => {
+    cloudinary.uploader
+      .upload(file, {
+        folder: "user",
+      })
+      .then((result) => {
+        if (result) {
+          resolve({
+            url: result.secure_url,
+            id: result.public_id,
+          });
+        }
+      });
+  });
+};
 
 module.exports.destroySingle = (id) => {
     return new Promise((resolve) => {

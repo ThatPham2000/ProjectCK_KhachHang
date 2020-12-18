@@ -68,9 +68,11 @@ module.exports.getOne = async (req, res) => {
 
 exports.saveInfor = async (req, res, next) =>{
 
-    const form =  formidable({multiples : false});
 
-    await form.parse(req, async (err, fields, files) => {
+    const form =  formidable({multiples : false});
+    
+    
+    form.parse(req, async (err, fields, files) => {
         if (err){
             return next(err);
         }
@@ -79,22 +81,37 @@ exports.saveInfor = async (req, res, next) =>{
         
         var newImage;
         var pathHost;
-        let ret;
+        var ret;
 
-        console.log(files);
-        const fileUpload = files.image;
-      
+        
+        var fileUpload;
+        if (Array.isArray(files.image)){
+            fileUpload = [];
+            for (const fie in  files.image) {
+                if (fie !== "undefined") {
+                    fileUpload.push(fie);
+                }
+            }
+        }
+        else
+            fileUpload = files.image;
+
+        console.log(fileUpload.size);
         if (fileUpload && fileUpload.size > 0){
+
+            
+
             const filepath = fileUpload.path.split('\\').pop() + '.' + fileUpload.name.split('.').pop();
             
-            await fs.renameSync(fileUpload.path, __dirname + '/../public/uploads/' + filepath)
+            fs.renameSync(fileUpload.path, __dirname + '/../public/uploads/' + filepath)
             pathHost =  __dirname + '/../public/uploads/' + filepath;
             newImage  = "/uploads/" + filepath;
 
+            
             ret = await cloudinary.uploadSingleAvatar(pathHost);
-           
+         
             if (ret) {
-                const user = await UserSevice.FindCloudinaryEmail(email);
+                const user =  UserSevice.FindCloudinaryEmail(email);
                 
                 if (user.cloudinary_id){
                     await cloudinary.destroySingle(user.cloudinary_id);
@@ -103,7 +120,7 @@ exports.saveInfor = async (req, res, next) =>{
                 
             }
         }
-        
+       
         
 
         User.findOne({email: email})
