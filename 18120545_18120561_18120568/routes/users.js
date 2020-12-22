@@ -3,15 +3,14 @@ const router = express.Router();
 
 const user = require('../controllers/user.controller');
 const authorize = require("../middleware/auth");
-const multipart = require('connect-multiparty');
 
+const upload = require("./../config/multer");
 
-var multipartMiddleware = multipart();
 
 /* GET users listing. */
 router.route('/account/profile')
     .get(authorize.auth, user.getOne)
-    .post(authorize.auth, multipartMiddleware, user.saveInfor);
+    .post(authorize.auth, upload.single("image"),  user.saveInfor);
 
 router.get('/account/logout', authorize.auth, user.logout);
 

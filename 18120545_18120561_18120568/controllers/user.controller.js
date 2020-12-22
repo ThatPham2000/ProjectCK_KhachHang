@@ -71,24 +71,25 @@ module.exports.getOne = async (req, res) => {
 exports.saveInfor = async (req, res, next) =>{
 
     
+    const { body } = req;
     const {name, email,  phone, sex, birthday} = req.body;
-   
+    console.log(req.file);
     try{
         var ret;    
 
         
         var fileUpload;
 
-        if (Array.isArray(req.files.image)){
+        if (Array.isArray(req.file.image)){
             fileUpload = [];
-            for (const fie in  req.files.image) {
+            for (const fie in  req.file.image) {
                 if (fie !== "undefined") {
                     fileUpload.push(fie);
                 }
             }
         }
         else{
-            fileUpload = req.files.image;
+            fileUpload = req.file.image;
            
         }
        
