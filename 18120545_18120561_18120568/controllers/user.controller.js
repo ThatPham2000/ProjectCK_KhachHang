@@ -4,6 +4,8 @@ const randomstring = require("randomstring");
 const fs = require("fs")
 const formidable = require("formidable");
 
+
+
 const User = require('../models/user.model');
 const UserSevice = require('../models/user.Service');
 const {sendEmail} =  require('../config/nodemailer');
@@ -68,47 +70,41 @@ module.exports.getOne = async (req, res) => {
 
 exports.saveInfor = async (req, res, next) =>{
 
-
-    const form =  formidable({multiples : false});
     
-    
-    form.parse(req, async (err, fields, files) => {
-        if (err){
-            return next(err);
-        }
-
-        const {name, email, image,  phone, sex, birthday} = await fields;
-        
-        var newImage;
-        var pathHost;
-        var ret;
+    const {name, email,  phone, sex, birthday} = req.body;
+   
+    try{
+        var ret;    
 
         
         var fileUpload;
-        if (Array.isArray(files.image)){
+
+        if (Array.isArray(req.files.image)){
             fileUpload = [];
-            for (const fie in  files.image) {
+            for (const fie in  req.files.image) {
                 if (fie !== "undefined") {
                     fileUpload.push(fie);
                 }
             }
         }
-        else
-            fileUpload = files.image;
-
-        console.log(fileUpload.size);
-        if (fileUpload && fileUpload.size > 0){
-
-            
-
-            const filepath = fileUpload.path.split('\\').pop() + '.' + fileUpload.name.split('.').pop();
-            
-            fs.renameSync(fileUpload.path, __dirname + '/../public/uploads/' + filepath)
-            pathHost =  __dirname + '/../public/uploads/' + filepath;
-            newImage  = "/uploads/" + filepath;
+        else{
+            fileUpload = req.files.image;
+           
+        }
+       
+        
+        if (fileUpload){
 
             
-            ret = await cloudinary.uploadSingleAvatar(pathHost);
+
+            //const filepath = fileUpload.path.split('\\').pop() + '.' + fileUpload.name.split('.').pop();
+            
+            //fs.renameSync(fileUpload.path, __dirname + '/../public/uploads/' + filepath)
+            //pathHost =  __dirname + '/../public/uploads/' + filepath;
+            //newImage  = "/uploads/" + filepath;
+
+            //console.log(pathHost);
+            ret = await cloudinary.uploadSingleAvatar(fileUpload.path);
          
             if (ret) {
                 const user =  UserSevice.FindCloudinaryEmail(email);
@@ -139,8 +135,13 @@ exports.saveInfor = async (req, res, next) =>{
             res.redirect('/user/account/profile');
     
         })
-    })
     
+    }catch(err){
+        res.render("error", {
+            message: "Update fail",
+            err,
+          });
+    }
 
 }
 

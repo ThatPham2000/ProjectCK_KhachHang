@@ -3,11 +3,15 @@ const router = express.Router();
 
 const user = require('../controllers/user.controller');
 const authorize = require("../middleware/auth");
+const multipart = require('connect-multiparty');
+
+
+var multipartMiddleware = multipart();
 
 /* GET users listing. */
 router.route('/account/profile')
     .get(authorize.auth, user.getOne)
-    .post(authorize.auth, user.saveInfor);
+    .post(authorize.auth, multipartMiddleware, user.saveInfor);
 
 router.get('/account/logout', authorize.auth, user.logout);
 
