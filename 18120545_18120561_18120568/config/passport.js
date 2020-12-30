@@ -103,11 +103,11 @@ module.exports = function(passport){
             });
           }
           
-          /*if (password !== req.body.password2) {
+          if (password !== req.body.password2) {
             return done(null, false, {
               message: 'Hai mật khẩu không khớp!'
             });
-          }*/
+          }
 
           var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           if (!re.test(String(req.body.email).toLowerCase())) {

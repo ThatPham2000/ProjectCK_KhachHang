@@ -2,9 +2,6 @@ const jwt =  require('jsonwebtoken')
 const bcrypt = require('bcrypt');
 const randomstring = require("randomstring");
 const fs = require("fs")
-const formidable = require("formidable");
-
-
 
 const User = require('../models/user.model');
 const UserSevice = require('../models/user.Service');
@@ -237,6 +234,7 @@ exports.changeTel = (req, res) =>{
     })
 
 }
+
 
 //log out
 exports.logout = (req, res, next) => {

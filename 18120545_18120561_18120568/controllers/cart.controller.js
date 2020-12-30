@@ -314,9 +314,6 @@ module.exports.mergeCart = async ( userId, sessionCart) => {
     return cart;
   } catch (error) {
     console.log(error);
-    res.status(500).json({
-      msg: "ValidatorError",
-      user: error.message,
-    });
+    
   }
 };

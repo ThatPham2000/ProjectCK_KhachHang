@@ -31,6 +31,96 @@ $(document).ready(function () {
     });
 });
 
+// Validator signup
+$('body>section>div.container>div.sign-up>form')
+.find('input')
+.not('.name')
+.click(function () {
+  const curr = $(this);
+  curr.next().addClass('d-none');
+  curr.next().removeClass('d-block text-danger');
+  curr.next().html('');
+  $('#err-sign').addClass('d-none');
+});
+
+$('body>section>div.container>div.sign-up>form')
+.find('input')
+.blur(function () {
+  if (!$(this).val()) {
+    $(this).next().removeClass('d-none');
+    $(this).next().addClass('d-block text-danger');
+
+    $(this).next().html('Trường này là bắt buộc!');
+    $(this).next().css('font-size', '12px');
+    $(this).next().css('margin', '-10px 0 10px');
+  }
+});
+$('input[name=password2]').blur(function (e) {
+    const retype = $('input[name=password]').val();
+    const pass = $(this).val();
+
+    if (retype !== pass) {
+      $(this).next().removeClass('d-none');
+      $(this).next().addClass('d-block text-danger');
+
+      $(this).next().html('Nhập lại mật khẩu không chính xác!');
+      $(this).next().css('font-size', '12px');
+      $(this).next().css('margin', '-10px 0 10px');
+    }
+});
+
+$('#sign-up').one('click', function (e) {
+    e.preventDefault();
+    if ($('.d-block.text-danger').length) return;
+    
+    $(this).click();
+});
+
+$('input[name=password2]').click(function () {
+const curr = $(this);
+curr.next().addClass('d-none');
+curr.next().removeClass('d-block text-danger');
+});
+
+// Form sign up check 
+$('body>section>div.container>div.sign-up>form')
+	.find('input')
+	.not('.name')
+	.each(function () {
+		$(this).blur(function () {
+			const curr = $(this);
+
+			const key = curr.attr('name');
+			const val = curr.val();
+			if (!val) return;
+
+			const url = '/buyer/checkSignup';
+			$.post({
+				url,
+				data: JSON.stringify({ [key]: val }),
+				contentType: 'application/json',
+				dataType: 'json',
+				success: function (data) {
+					console.log(data);
+					if (data.msg === 'error') {
+						curr.next().removeClass('d-none');
+						curr.next().addClass('d-block text-danger');
+
+						curr.next().html(data[key]);
+						curr.next().css('font-size', '12px');
+						curr.next().css('margin', '-10px 0 10px');
+					} else {
+						// curr.css("border-color", "green");
+						// curr.css("border-width", "2px");
+						curr.next().addClass('d-none');
+						curr.next().removeClass('d-block text-danger');
+					}
+				},
+			});
+		});
+	});
+
+
 $(".add-to-cart").click(function (e) {
     e.preventDefault();
     const slugName = $(this).attr("value");

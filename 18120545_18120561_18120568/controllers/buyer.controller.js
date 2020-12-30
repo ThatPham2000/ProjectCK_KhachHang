@@ -12,10 +12,14 @@ const jwtKey = process.env.JWT_KEY
 exports.getLogin = (req, res, next) =>{
     const message = req.flash("error")[0];
     
-    console.log(req.isAuthenticated());
+
+    var message2 = req.flash("success")[0];
     
+    console.log(message2);
+
     res.render("login", {
         message: message,
+        message2: message2,
         });
     
 }
@@ -92,7 +96,7 @@ module.exports.forgot = async (req, res) => {
 
     const { token} = req.params;
     const code = req.body.code;
-    console.log(code);
+  
     if(!token){
         return res.status(404).json({
             msg: 'Invalid!'
@@ -117,8 +121,8 @@ module.exports.forgot = async (req, res) => {
             
                 if (code == user.passwordReset){
 
-                    res.render('resetPassword', {token: token});
-
+                   
+                    
                     //sinh ma xac nhan
                     let confirmPass = randomstring.generate({
                         length: 6
@@ -126,11 +130,12 @@ module.exports.forgot = async (req, res) => {
                     user.passwordReset = confirmPass;
 
                     user.save();
+                    res.redirect("/buyer/resetPassword/" + token);
                 }
                 else{
-                    return res.status(404).json({
-                        msg: 'khong khop',
-                    })
+                    req.session.message2 = 'This code does not match';
+                    res.redirect("/buyer/checkforgot/" + token);
+
                 }
                 
             }
@@ -174,9 +179,7 @@ module.exports.postResetPassword = async (req, res) =>{
             }
 
             bcrypt.hash(req.body.password, bcrypt.genSaltSync(10), function(err, hashPass){ //Mã hóa mật khẩu trước khi lưu vào db
-                if (err) {
-                    //res.status(404).json({err});
-                }
+               
                 
                 user.password = hashPass;
                 
@@ -210,7 +213,7 @@ module.exports.confirm = (req, res) =>{
         const decoded = jwt.verify(token, jwtKey)
         const {_id} = decoded;
 
-        User.findOne({_id})
+        User.findById(_id)
         .then(user => {
             if(!user) {
                 return res.status(404).json({
@@ -252,18 +255,80 @@ module.exports.confirm = (req, res) =>{
 exports.getCheckFogot = (req, res) => {
 
     const { token} = req.params;
-    console.log(token);
-    res.render('checkforgot', {token: token});
+    const message2 = req.session.message2;
+    console.log(message2)
+    delete req.session.message2;
+    res.render('checkforgot', {token: token, message2: message2});
+    
 }
 
-//check forgot
-exports.checkFogot = (req, res) => {
 
-    const {token} = req.params;
-    
-    res.redirect('buyer/resetPassword/' + token);
+exports.getResetPassword = (req, res) => {
 
+    const { token} = req.params;
+    res.render("resetPassword", {token})
     
+}
+
+
+module.exports.checkSingup = async (req, res, next) =>{
+    
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+	try {
+		const key = Object.keys(req.body)[0];
+        
+		let respond = {
+			msg: 'success',
+		};
+        
+		switch (key) {
+			case 'email': {
+                const userWithEmail = await User.findOne({ email: req.body[key] });
+               
+				if (userWithEmail) {
+                    respond.email = 'Your email address is already! ';
+                    
+				}
+				if (!req.body[key].match(emailRegex)) {
+					respond.email = 'Invalid email!';
+				}
+				break;
+			}
+			case 'phone': {
+				const userWithPhone = await User.findOne({ phone: req.body[key] });
+				if (userWithPhone) {
+                    respond.phone = 'Your phone number is already! ';
+                    
+				}
+				if (!req.body[key].match(phoneRegex)) {
+					respond.phone = 'Invalid phone';
+				}
+				break;
+			}
+			case 'password': {
+				if (req.body[key].length < 6) {
+					respond.password = 'The minimum password length is 6!';
+				} else if (req.body[key].length > 20) {
+					respond.password = 'The maximum password length is 20!';
+				}
+				break;
+			}
+		}
+
+		if (Object.keys(respond).length > 1) {
+			respond.msg = 'error';
+		}
+
+		res.status(200).json(respond);
+	} catch (error) {
+		console.log(error.message);
+		res.status(500).json({
+			msg: error.message,
+			error,
+		});
+	}
 }
 
 

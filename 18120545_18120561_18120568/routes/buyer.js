@@ -19,9 +19,10 @@ router.post('/login', passport.authenticate("localSignin", {
                 }));
 
 router.post('/signup', passport.authenticate('localSignup', {
-            successRedirect: '/',
+            successRedirect: '/buyer/login',
             failureRedirect: '/buyer/signup',
-            failureFlash: true
+            failureFlash: true,
+            successFlash: 'Sign Up Success. Please confirm your account via gmail!'
         }));
 
 
@@ -36,17 +37,17 @@ router.route('/forgot')
         .post( controllers.postForgot);
 
 router.route('/resetPassword/:token')
-        .get( controllers.forgot)
+        .get( controllers.getResetPassword)
         .post( controllers.postResetPassword);
 
 
 
 router.route('/checkforgot/:token')
     .get(controllers.getCheckFogot)
-    .post( controllers.checkFogot);
+    .post(controllers.forgot);
 
 
-
+router.post('/checkSignup', controllers.checkSingup);
 
 
 
