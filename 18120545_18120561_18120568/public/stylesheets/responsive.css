@@ -184,11 +184,17 @@
     account setting
 */
 
+    a.text-profile {
+        background: #696763 !important;
+        color: #fff !important;
+        font-family: 'Roboto', sans-serif;
+    }
+
     .nav.navbar-nav .dropdown-acc {
         position: relative;
         display: inline-block;
     }
-  
+    
   .sub-menu-acc {
     display: none;
     position: absolute;
@@ -504,3 +510,4 @@
         float: none;
     }
 }
+

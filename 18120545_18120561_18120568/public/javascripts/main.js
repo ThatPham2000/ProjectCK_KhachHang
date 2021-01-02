@@ -50,7 +50,7 @@ $('body>section>div.container>div.sign-up>form')
     $(this).next().removeClass('d-none');
     $(this).next().addClass('d-block text-danger');
 
-    $(this).next().html('Trường này là bắt buộc!');
+    $(this).next().html('This field is required!!');
     $(this).next().css('font-size', '12px');
     $(this).next().css('margin', '-10px 0 10px');
   }
@@ -63,13 +63,13 @@ $('input[name=password2]').blur(function (e) {
       $(this).next().removeClass('d-none');
       $(this).next().addClass('d-block text-danger');
 
-      $(this).next().html('Nhập lại mật khẩu không chính xác!');
+      $(this).next().html('Re-enter the password incorrectly!');
       $(this).next().css('font-size', '12px');
       $(this).next().css('margin', '-10px 0 10px');
     }
 });
 
-$('#sign-up').one('click', function (e) {
+$('#sign-up').on('click', function (e) {
     e.preventDefault();
     if ($('.d-block.text-danger').length) return;
     
@@ -80,6 +80,7 @@ $('input[name=password2]').click(function () {
 const curr = $(this);
 curr.next().addClass('d-none');
 curr.next().removeClass('d-block text-danger');
+curr.next().html('');
 });
 
 // Form sign up check 
@@ -112,7 +113,7 @@ $('body>section>div.container>div.sign-up>form')
 					} else {
 						
 						curr.next().addClass('d-none');
-						curr.next().removeClass('d-block text-danger');
+            
 					}
 				},
 			});
@@ -291,7 +292,7 @@ const modalCheckout = (data) => {
           <div class="mb-3">
             <span><b>Receiver:</b>&nbsp;${data.data.receiver}&nbsp;&nbsp;<br> <b>Phone: </b> 
             ${data.data.phone} <br>
-            <b>Payment methods</b>
+            <b>Payment methods:</b>
             <strong>&nbsp;${data.data.paymentMethod.toUpperCase()}
             </strong><br>
             <b>Adress: </b>&nbsp;${data.data.address} </span>
@@ -337,3 +338,13 @@ const modalCheckout = (data) => {
           </div>
         </div>`;
 };
+
+
+$('#reset-password2').on('click', function (e) {
+  e.preventDefault();
+  const pass1 = $('input[name=password]').val();
+  const pass2 = $('input[name=password2]').val();
+  if (pass1 !== pass2) return;
+  
+  $(this).click();
+});

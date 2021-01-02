@@ -167,19 +167,30 @@ exports.changePassword = (req, res) =>{
                         req.session.error = 'Wrong password';
                         return res.redirect('/user/account/profile');
                     } else {
+
+
                         if (newpass === confirmpass){
+                            if (newpass.length < 6){
+                                req.session.error = "The minimum password length is 6!";
+                                return res.redirect('/user/account/profile');
+                            } 
+                            else if ( newpass.length > 6){
+                                req.session.error = 'The maximum password length is 30!';
+                                return res.redirect('/user/account/profile');
+                            }
+                            else{
+                                bcrypt.hash(newpass, bcrypt.genSaltSync(10))
+                                .then(newhash =>{
+                                    user.password = newhash;
 
-                            bcrypt.hash(newpass, bcrypt.genSaltSync(10))
-                            .then(newhash =>{
-                                user.password = newhash;
-
-                                user.save();
-                                return res.redirect('/user/account/logout');
-                            })
+                                    user.save();
+                                    return res.redirect('/user/account/profile');
+                                })
+                            }
                         }
                         else{
                          
-                            req.session.error = 'confirm password does not match';
+                            req.session.error = 'Confirm password does not match';
                             return res.redirect('/user/account/profile');
                         }
                     }
@@ -210,10 +221,10 @@ exports.changeTel = (req, res) =>{
             })
         }
         else{
-            var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+            const vnf_regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
             if (vnf_regex.test(newPhone) == false || vnf_regex.test(curPhone) == false ){
 
-                req.session.errorPhone = 'Your input are not a phone number';
+                req.session.errorPhone = 'Your input is not a phone number';
                 return res.redirect('/user/account/profile');
             }   
 

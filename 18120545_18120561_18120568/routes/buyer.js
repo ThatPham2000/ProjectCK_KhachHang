@@ -34,7 +34,7 @@ router.get('/confirm/:token', controllers.confirm);
 
 router.route('/forgot')
         .get(controllers.getForgot)
-        .post( controllers.postForgot);
+        .post(controllers.postForgot);
 
 router.route('/resetPassword/:token')
         .get( controllers.getResetPassword)

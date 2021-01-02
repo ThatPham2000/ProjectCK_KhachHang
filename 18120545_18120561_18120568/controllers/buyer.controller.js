@@ -18,6 +18,7 @@ exports.getLogin = (req, res, next) =>{
     console.log(message2);
 
     res.render("login", {
+        title: "Login",
         message: message,
         message2: message2,
         });
@@ -26,12 +27,12 @@ exports.getLogin = (req, res, next) =>{
 
 exports.getRegister = (req, res, next) =>{
 
-    res.render('signup');
+    res.render('signup', {title: "Sign up"});
 }
 
 exports.getForgot = (req, res, next) =>{
 
-    res.render('forgot');
+    res.render('forgot', {title: "Forgot password"});
 }
 
 
@@ -50,6 +51,7 @@ module.exports.getOne = async (req, res) => {
             })
         }else{
             res.render('user', {
+                    title: "Profile",
                     name: user.name,
                     email: user.email,
                     phone: user.phone,
@@ -169,6 +171,10 @@ module.exports.postResetPassword = async (req, res) =>{
     try{
         const decoded = jwt.verify(token, jwtKey)
         const {_id} = decoded;
+        const {password, password2} = req.body;
+
+    
+
         User.findById({_id})
         .then(user => {
 
@@ -258,7 +264,11 @@ exports.getCheckFogot = (req, res) => {
     const message2 = req.session.message2;
     console.log(message2)
     delete req.session.message2;
-    res.render('checkforgot', {token: token, message2: message2});
+    res.render('checkforgot', {
+        title: "Check code",
+        token: token, 
+        message2: message2
+    });
     
 }
 
@@ -266,7 +276,10 @@ exports.getCheckFogot = (req, res) => {
 exports.getResetPassword = (req, res) => {
 
     const { token} = req.params;
-    res.render("resetPassword", {token})
+    res.render("resetPassword", {
+        title: "Reset Password",
+        token
+    })
     
 }
 
@@ -310,8 +323,8 @@ module.exports.checkSingup = async (req, res, next) =>{
 			case 'password': {
 				if (req.body[key].length < 6) {
 					respond.password = 'The minimum password length is 6!';
-				} else if (req.body[key].length > 20) {
-					respond.password = 'The maximum password length is 20!';
+				} else if (req.body[key].length > 30) {
+					respond.password = 'The maximum password length is 30!';
 				}
 				break;
 			}

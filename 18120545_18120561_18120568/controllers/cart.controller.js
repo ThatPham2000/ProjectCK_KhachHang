@@ -39,6 +39,7 @@ module.exports.displayCart =  async (req, res, next) =>{
         userCart = req.session.cart;
 
       return res.render("cart",{
+        title: "Cart",
         cart: userCart,
       })
 

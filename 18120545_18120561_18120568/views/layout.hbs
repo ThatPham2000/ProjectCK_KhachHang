@@ -68,7 +68,7 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="/index">TechShop</a>
+							<a href="/">TechShop</a>
 						</div>
 						<div class="btn-group pull-right clearfix">
 							<div class="btn-group">
@@ -111,12 +111,12 @@
 									{{/if}}
 									</a>
 								</li>
-								{{#if session.user}}
+								{{#if user}}
 								<li class="dropdown-acc"><a href="/user/account/profile"><i class="fa fa-user"></i>
 										{{user.name}}</a></a>
 									<ul role="menu" class="sub-menu-acc">
-										<li><a href="/user/account/profile">Information</a></li>
-										<li><a href="/user/account/logout">Log out</a></li>
+										<li><a href="/user/account/profile" class = "text-profile">Information</a></li>
+										<li><a href="/user/account/logout" class = "text-profile" >Log out</a></li>
 									</ul>
 								</li>
 

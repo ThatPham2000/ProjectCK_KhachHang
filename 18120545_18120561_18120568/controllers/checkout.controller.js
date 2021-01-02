@@ -1,6 +1,7 @@
 const cartService = require("../models/cart.service");
 const userSevice = require("../models/user.Service");
 const checkoutService = require("../models/checkout.service");
+const { response } = require("../app");
 
 
 module.exports.getCheckout = async(req, res, next) =>{
@@ -8,7 +9,7 @@ module.exports.getCheckout = async(req, res, next) =>{
     const {user} = req;
     try{
 
-        const userCart = await cartService.findCartbyUserId(user._id);
+        const userCart = await cartService.findIdbyStatus(user._id, "waiting");
 
 
         res.render("checkout", {
@@ -27,13 +28,18 @@ module.exports.getCheckout = async(req, res, next) =>{
 
 module.exports.postCheckout = async (req, res, next) =>{
 
-    console.log("hahahah")
+    
     const {user} = req;
 
     try{
         const {newName, newPhone, newCity, newDistrict, newAddress} = req.body;
         const cart = await cartService.findIdbyStatus(user._id, "waiting");
         
+        if(cart.totalQuantity == 0){
+
+            return res.redirect("/checkout");
+        }
+
         const { userId, _id, status, items, totalQuantity, totalCost } = cart;
         const {address, city, district, phone, name} = user;
         
@@ -42,7 +48,7 @@ module.exports.postCheckout = async (req, res, next) =>{
             await userSevice.updateAddress(user.email, newAddress, newDistrict, newCity);
             
         }
-        console.log(12123123);
+       
         const checkoutObj = {
             userId : userId,
             cartId: _id,
