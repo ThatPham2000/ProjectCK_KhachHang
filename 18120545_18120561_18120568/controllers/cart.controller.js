@@ -30,7 +30,7 @@ module.exports.displayCart =  async (req, res, next) =>{
       var userCart; 
 
       if (user){
-         userCart = await cartService.findCartbyUserId(user._id);
+         userCart = await cartService.findIdbyStatus(user._id);
       
         if (!userCart)
           req.session.cart = await Cart.create({ userId: user._id });
@@ -136,7 +136,7 @@ module.exports.addToCart = async (req, res, next) => {
   };
 
 
-// put update ajx
+// put update ajax
 module.exports.putUpdate = async (req, res, next) => {
   
 

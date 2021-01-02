@@ -105,13 +105,12 @@ $('body>section>div.container>div.sign-up>form')
 					if (data.msg === 'error') {
 						curr.next().removeClass('d-none');
 						curr.next().addClass('d-block text-danger');
-
+           
 						curr.next().html(data[key]);
 						curr.next().css('font-size', '12px');
 						curr.next().css('margin', '-10px 0 10px');
 					} else {
-						// curr.css("border-color", "green");
-						// curr.css("border-width", "2px");
+						
 						curr.next().addClass('d-none');
 						curr.next().removeClass('d-block text-danger');
 					}
@@ -221,3 +220,120 @@ $(".file-upload").on("change", function () {
 $(".upload-button").on("click", function () {
   $(".file-upload").click();
 });
+
+// 
+$('.widget.dashboard-links a').on('click', function(){
+  console.log(123)
+  $('.tab-pane[role="tabpanel"]').removeClass('show')
+})
+
+//view checkout
+// View checkout history
+$('.view-checkout').click(function (e) {
+ 
+	e.preventDefault();
+
+	const id = $(this).attr('value');
+  console.log(12312);
+	$.get(`/user/checkout/${id}`, function (data) {
+		if (data.msg !== 'success') return;
+    
+		$('#exampleModalCenter').html(modalCheckout(data));
+		$('#show-model').trigger('click');
+	});
+});
+
+
+const modalCheckout = (data) => {
+
+	const bodyModal = data.data.items.map((item, index) => {
+		return `
+      <tr>
+        <td>
+          ${index + 1}
+        </td>
+        <td>
+          <div class="img d-flex align-items-center">
+            <a href="/products/${item.slugName}"
+              ><img style="width: 45px; height: auto;" src="${
+								item.thumbnail
+							}" alt="Image"
+            /></a>
+            <p class="m-0">${item.name}</p>
+          </div>
+        </td>
+        <td>${item.price}</td>
+        <td>
+          ${item.quantity}
+        </td>
+        <td>${item.total}</td>
+      </tr>
+    `;
+	});
+
+	return `
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: honeydew;">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Purchase information
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <span><b>Receiver:</b>&nbsp;${data.data.receiver}&nbsp;&nbsp;<br> <b>Phone: </b> 
+            ${data.data.phone} <br>
+            <b>Payment methods</b>
+            <strong>&nbsp;${data.data.paymentMethod.toUpperCase()}
+            </strong><br>
+            <b>Adress: </b>&nbsp;${data.data.address} </span>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead class="thead-dark">
+                <tr>
+                  <th>No</th>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody class="align-middle" id="cart">
+              ${bodyModal}
+                <tr>
+                  <td>
+                    Sum
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                    ${data.data.totalQuantity}
+                  </td>
+                  <td>${data.data.totalPayment}</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+                >
+              Close
+              </button>
+            </div>
+          </div>
+        </div>`;
+};

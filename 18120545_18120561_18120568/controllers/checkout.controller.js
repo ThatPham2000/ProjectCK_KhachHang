@@ -61,7 +61,7 @@ module.exports.postCheckout = async (req, res, next) =>{
         };
 
        
-        await cartService.saveStatus(_id, "paid");
+        await cartService.saveStatus(_id, "checked");
         await checkoutService.saveNewCheckout(checkoutObj);
         
         delete req.session.cart;

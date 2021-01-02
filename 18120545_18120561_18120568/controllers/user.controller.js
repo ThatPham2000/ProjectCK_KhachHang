@@ -9,6 +9,7 @@ const {sendEmail} =  require('../config/nodemailer');
 const upload = require('../config/multer')
 const cloudinary = require('../config/cloudinary');
 const { fields } = require('../config/multer');
+const CheckoutService = require("../models/checkout.service")
 
 
 
@@ -21,7 +22,7 @@ module.exports.getOne = async (req, res) => {
     
   
     User.findById(_id)
-    .then(user => {
+    .then(async (user) => {
         if(!user){
             return res.status(404).json({
                 message: 'User not found!'
@@ -43,6 +44,9 @@ module.exports.getOne = async (req, res) => {
             }
             phone = phone + str[str.length - 1];
             
+            //checkout
+            let checkout = await CheckoutService.find1checkout(user._id);
+      
             res.render('user', {
                     name: user.name,
                     email: user.email,
@@ -52,6 +56,7 @@ module.exports.getOne = async (req, res) => {
                     birthday: user.birthday,
                     error: error,
                     errorPhone: errorPhone,
+                    checkout: checkout,
                 });
 
             //delete res.session.error;
@@ -95,13 +100,7 @@ exports.saveInfor = async (req, res, next) =>{
 
             
 
-            //const filepath = fileUpload.path.split('\\').pop() + '.' + fileUpload.name.split('.').pop();
-            
-            //fs.renameSync(fileUpload.path, __dirname + '/../public/uploads/' + filepath)
-            //pathHost =  __dirname + '/../public/uploads/' + filepath;
-            //newImage  = "/uploads/" + filepath;
-
-            //console.log(pathHost);
+      
             ret = await cloudinary.uploadSingleAvatar(fileUpload.path);
          
             if (ret) {
@@ -235,6 +234,28 @@ exports.changeTel = (req, res) =>{
 
 }
 
+
+//view checkout page
+module.exports.viewCheckout = async (req, res, next) =>{
+
+    const {id} = req.params;
+
+    try{
+        const getCheckout = await CheckoutService.findCheckoutByID(id);
+        
+        
+        return res.status(200).json({
+            msg: "success",
+            data: getCheckout
+        });
+
+    }catch(err){
+
+        res.status(404).send({
+            message: "error",
+        })
+    }
+}
 
 //log out
 exports.logout = (req, res, next) => {

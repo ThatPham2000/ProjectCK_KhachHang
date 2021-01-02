@@ -56,8 +56,12 @@ app.use(express.static('public'));
        new RegExp(' value=\"' + selected + '\"'),
        '$& selected="selected"');
  });
+ handlebars.registerHelper('dateFormat', require('handlebars-dateformat'));
 
-
+ handlebars.registerHelper('incremented', function (index) {
+  index++;
+  return index;
+});
  
 app.use(
     session({

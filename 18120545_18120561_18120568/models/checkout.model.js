@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
 
 const enumStatus = {
-  values: ["waiting", "delivered"],
-  message: `Status must be 'waiting', delivered'!`,
+  values: ['waiting', 'checked', 'confirmed', 'transferring', 'delivered', 'canceled'],
 };
 
 const enumPaymentMethod = {
   values: ["cod", "paypal", "banking"],
-  message: `Status must be 'cod', 'paypal' or 'banking'!`,
 };
 
 const checkoutSchema = mongoose.Schema({
@@ -70,6 +68,10 @@ const checkoutSchema = mongoose.Schema({
     type: String,
     required: [true, "Total payment is required!"],
   },
+  date: {
+		type: Date,
+		default: new Date(),
+  }
 });
 
 // Add plugins
