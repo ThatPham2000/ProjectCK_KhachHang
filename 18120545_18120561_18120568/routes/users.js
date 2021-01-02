@@ -19,9 +19,9 @@ router.post('/account/changePassword', authorize.auth, user.changePassword );
 
 router.post('/account/changePhone', authorize.auth, user.changeTel);
 
-router.get('/checkout/:id', user.viewCheckout);
+router.get('/checkout/:id',authorize.auth, user.viewCheckout);
 
-router.post('/account/changeAddress', user.changeAddress)
+router.post('/account/changeAddress',authorize.auth, user.changeAddress)
 
 
 module.exports = router;
