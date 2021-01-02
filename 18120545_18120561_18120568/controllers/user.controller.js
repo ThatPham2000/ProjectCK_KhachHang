@@ -235,6 +235,32 @@ exports.changeTel = (req, res) =>{
 }
 
 
+module.exports.changeAddress = async(req, res) =>{
+
+    const {newCity, newDistrict, newAddress} = req.body;
+
+    const _id = req.session.passport.user;
+
+    
+    User.findById(_id)
+    .then(async user =>{
+
+        if (!user){
+            return res.status(404).json({
+                message: "User does not exists",
+            })
+        }
+        else{
+           
+           await UserSevice.updateAddress(user.email, newAddress, newDistrict, newCity);
+           return res.redirect('/user/account/profile');
+        }
+
+    })
+
+}
+
+
 //view checkout page
 module.exports.viewCheckout = async (req, res, next) =>{
 

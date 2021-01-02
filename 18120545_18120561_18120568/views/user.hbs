@@ -188,7 +188,7 @@
 							<h2>Address</h2>
 							
 						</div>
-						<form method="POST" action="user/account/changeAddress">
+						<form method="POST" action="/user/account/changeAddress">
 							<div class = "form-group">
 								<label for="city">Province / City"</label>
 								<input class="form-control" id = 'city' type = "text" name = "newCity" value="{{user.city}}" placeholder= "Province / City">
@@ -198,7 +198,7 @@
 								<input class="form-control" id = "district" type = "text" name = "newDistrict" value="{{user.district}}" placeholder = "District" required> 
 							</div>
 							<div class = "form-group">
-								<label for="address">Adress</label>
+								<label for="address">Address</label>
 								<input class="form-control"   id = "address" type="text" name = "newAddress" value= "{{user.address}}" placeholder="Address" required>
 							</div>
 							<button type="submit" class = "btn btn-transparent">Change Address</button>

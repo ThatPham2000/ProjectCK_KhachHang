@@ -17,7 +17,7 @@ module.exports.updateAddress = async(email, address, district, city) => {
     
     User.findOne({email: email})
     .then(user =>{
-        console.log(id)
+        
         user.address = address;
         user.district = district;
         user.city = city;

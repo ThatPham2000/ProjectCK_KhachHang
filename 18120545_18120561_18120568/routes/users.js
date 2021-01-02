@@ -21,5 +21,7 @@ router.post('/account/changePhone', authorize.auth, user.changeTel);
 
 router.get('/checkout/:id', user.viewCheckout);
 
+router.post('/account/changeAddress', user.changeAddress)
+
 
 module.exports = router;

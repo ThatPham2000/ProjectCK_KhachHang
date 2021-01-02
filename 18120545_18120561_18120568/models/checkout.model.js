@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const enumStatus = {
-  values: ['waiting', 'checked', 'confirmed', 'transferring', 'delivered', 'canceled'],
+  values: ['waiting', 'confirmed', 'transferring', 'delivered', 'canceled'],
 };
 
 const enumPaymentMethod = {

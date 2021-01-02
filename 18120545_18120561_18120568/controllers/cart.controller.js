@@ -30,7 +30,7 @@ module.exports.displayCart =  async (req, res, next) =>{
       var userCart; 
 
       if (user){
-         userCart = await cartService.findIdbyStatus(user._id);
+         userCart = await cartService.findIdbyStatus(user._id, "waiting");
       
         if (!userCart)
           req.session.cart = await Cart.create({ userId: user._id });
