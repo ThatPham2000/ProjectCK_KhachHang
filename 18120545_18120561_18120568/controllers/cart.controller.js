@@ -63,7 +63,7 @@ module.exports.addToCart = async (req, res, next) => {
     try {
       if (user) {
         const userCart = await cartService.findIdbyStatus(user._id, "waiting");
-  
+        
         if (!userCart) {
           cart = await Cart.create({ userId: user._id });
         } 
@@ -103,7 +103,7 @@ module.exports.addToCart = async (req, res, next) => {
       }
   
       cart.totalQuantity++;
-
+      
       var tmp = parseInt(parsePrice(cart.totalCost));
      
       var s = parseIntToPrice((parsePrice(price) + tmp).toString());
@@ -117,7 +117,9 @@ module.exports.addToCart = async (req, res, next) => {
       
 
       if (user) {
+        
         await cartService.updateOne(user._id, cart);
+        console.log(user._id);
       }
       
   

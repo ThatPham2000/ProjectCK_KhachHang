@@ -48,6 +48,7 @@ module.exports.getOne = async (req, res) => {
             let checkout = await CheckoutService.find1checkout(user._id);
       
             res.render('user', {
+                    title: "Profile",
                     name: user.name,
                     email: user.email,
                     image: user.image,
@@ -74,24 +75,25 @@ exports.saveInfor = async (req, res, next) =>{
 
     
     const { body } = req;
+    
     const {name, email,  phone, sex, birthday} = req.body;
-    console.log(req.file);
+   
     try{
         var ret;    
 
         
         var fileUpload;
 
-        if (Array.isArray(req.file.image)){
+        if (Array.isArray(req.file)){
             fileUpload = [];
-            for (const fie in  req.file.image) {
+            for (const fie in  req.file) {
                 if (fie !== "undefined") {
                     fileUpload.push(fie);
                 }
             }
         }
         else{
-            fileUpload = req.file.image;
+            fileUpload = req.file;
            
         }
        
@@ -114,7 +116,7 @@ exports.saveInfor = async (req, res, next) =>{
             }
         }
        
-        
+        console.log(ret);
 
         User.findOne({email: email})
         .then(user => {

@@ -1,5 +1,5 @@
 const Cart = require("./cart.model")
-
+const ProductSevice =  require("./ProductService");
 
 module.exports.findIdbyStatus = (id, status) =>{
 
@@ -11,8 +11,10 @@ module.exports.findIdbyStatus = (id, status) =>{
 
 module.exports.updateOne = (id, cart) =>{
 
+    
+
     return Cart.updateOne(
-            { userId: id },
+            { userId: id , status : "waiting"},
             {
              $set: cart,
             }
@@ -33,6 +35,19 @@ module.exports.saveStatus = (id, status) =>{
             })
 }
 
+module.exports.countProduct = async (_id) =>{
+
+    Cart.findById(_id)
+    .then(async cart =>{
+
+
+        for (let i = 0; i < cart.items.length; i++ ){
+
+            await ProductSevice.countProduct(cart.items[i].itemId);
+        }
+
+    })
+}
 
 module.exports.initCart = {
     userId: null,

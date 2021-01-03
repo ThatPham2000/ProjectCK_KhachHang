@@ -17,3 +17,14 @@ module.exports.findbySlugname = async(sl) =>{
 
     return ProdMongoose.findOne({slugName: sl});
 }
+
+module.exports.countProducts =  async (_id) =>{
+
+    ProdMongoose.findById(_id)
+    .then(product =>{
+
+        product.soldQuantity += 1;
+
+        product.save();
+    })
+}

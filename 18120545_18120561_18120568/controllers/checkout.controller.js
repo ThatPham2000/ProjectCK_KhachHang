@@ -48,7 +48,7 @@ module.exports.postCheckout = async (req, res, next) =>{
             await userSevice.updateAddress(user.email, newAddress, newDistrict, newCity);
             
         }
-       
+        
         const checkoutObj = {
             userId : userId,
             cartId: _id,
@@ -68,6 +68,7 @@ module.exports.postCheckout = async (req, res, next) =>{
 
        
         await cartService.saveStatus(_id, "checked");
+        await cartService.countProduct(_id);
         await checkoutService.saveNewCheckout(checkoutObj);
         
         delete req.session.cart;
