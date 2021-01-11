@@ -376,7 +376,6 @@
 									<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
 									<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
 								</ul>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 								<p><b>Write Your Review</b></p>
 								
 								<form method="POST" onsubmit="return doComment(this);">
@@ -396,6 +395,17 @@
 								</form>
 				
 							</div>
+							<!-- Comments -->
+							{{#each comments}}
+							<div class="media mb-4">
+								<img class="d-flex mr-3" src="../public/images/product-details/profile.png" alt="">
+								<div class="media-body">
+									<h5 class="mt-0">{{username}}</h5>
+									<h6 class="mt - 0">{{comment}}</h6>
+								</div>
+							</div>
+							{{/each}}
+							
 						</div>
 						<script>
 							function doComment(form){
@@ -411,6 +421,7 @@
 							return false;
 							}
 						</script>
+						
 					</div>
 				</div><!--/category-tab-->
 				
@@ -508,4 +519,12 @@
 			</div>
 		</div>
 	</div>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </section>

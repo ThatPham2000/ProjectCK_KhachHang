@@ -1,7 +1,7 @@
 const { isValidObjectId } = require('mongoose');
 const Product= require('../models/product.model');
 
-exports.detail = (req, res, next) => {
+exports.detail = async(req, res, next) => {
     const commentsPerPage = 3;
     // Get books from model
     Product.findById(req.params.id)
@@ -16,18 +16,23 @@ exports.detail = (req, res, next) => {
             id: product._id,
             pathImages: product.images,
             price: product.price,
-            title: product.name
+            title: product.name,
+            comments: product.comments,
+            product: product
         });
+        var comment = product.comments;
+        console.log(comment[3]);
     })
     
 };
 
-exports.postComment = (req, res, next) => {
+exports.postComment = async(req, res, next) => {
     var cmt = { username: req.body.username, comment: req.body.comment };
-    Product.findById(req.body.post_id.slice(0,-1))
-    .then(product =>{
-        product.comments.push(cmt);
-        console.log(product.comments);
-    })
+    console.log(req.body.post_id);
+    let product = await Product.findOneAndUpdate(
+      {_id: req.body.post_id},
+      {$push: {comments: cmt}}  
+    );
+    console.log(product.comments);
 };
     
