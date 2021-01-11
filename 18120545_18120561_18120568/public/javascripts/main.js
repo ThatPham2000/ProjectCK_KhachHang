@@ -69,7 +69,7 @@ $('input[name=password2]').blur(function (e) {
     }
 });
 
-$('#sign-up').on('click', function (e) {
+$('#sign-up').one('click', function (e) {
     e.preventDefault();
     if ($('.d-block.text-danger').length) return;
     
@@ -111,9 +111,9 @@ $('body>section>div.container>div.sign-up>form')
 						curr.next().css('font-size', '12px');
 						curr.next().css('margin', '-10px 0 10px');
 					} else {
-						
+						curr.next().removeClass('d-block text-danger');
 						curr.next().addClass('d-none');
-            
+            curr.next().html('');
 					}
 				},
 			});
@@ -142,7 +142,14 @@ $(".add-to-cart").click(function (e) {
  // Update cart
  $(".cart_quantity_change").click(function (e) {
     e.preventDefault();
-    
+    if ( $(this).attr("disabled")=== true) return;
+
+    $(".cart_quantity_change").attr("disabled", true)
+    setTimeout(function(){
+      $(".cart_quantity_change").attr("disabled", false)
+    },500);
+
+  
     const value = $(this).attr("value");
     const slugName = $(this).attr("name");
     
@@ -270,7 +277,7 @@ const modalCheckout = (data) => {
         <td>${item.total}</td>
       </tr>
     `;
-	});
+	}).join('');
 
 	return `
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
