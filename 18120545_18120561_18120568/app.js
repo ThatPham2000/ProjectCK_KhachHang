@@ -31,6 +31,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const buyer = require('./routes/buyer');
 const Cart = require('./models/cart.model');
 const User = require('./models/user.model');
+const Product = require("./models/product.model")
 
 const {initCart} = require('./models/cart.service');
 const { handlebars } = require('hbs');
@@ -97,13 +98,9 @@ app.use('/buyer', buyer);
 app.use('/user', usersRouter);
 app.use('/shop',shopRouter);
 app.use('/cart',cartRouter);
-app.use('/checkout',checkoutRouter)
+app.use('/checkout',checkoutRouter);
 //app.use('/login', loginRouter);
 //app.use('/signup', signUpRouter);
-
-
-
-
 
 // pass passport for configuration
 require('./config/passport')( passport);

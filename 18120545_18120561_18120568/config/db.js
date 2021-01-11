@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+mongoose.set('useFindAndModify', false);
 const URL = process.env.MONGO_URL;
 
 const connectDB = async () => {
@@ -9,7 +9,6 @@ const connectDB = async () => {
             useUnifiedTopology: true,
             useCreateIndex: true
         })
-
         console.log('DB connected!')
     } catch (err) {
         console.log(err.message)
