@@ -4,6 +4,7 @@ const Product= require('../models/product.model');
 exports.detail = async(req, res, next) => {
     const commentsPerPage = 3;
     // Get books from model
+    console.log(123123);
     Product.findById(req.params.id)
     .then(product =>{
         if (!product.countView){

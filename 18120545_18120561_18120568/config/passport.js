@@ -51,6 +51,13 @@ module.exports = function(passport){
               message: 'Vui lòng check mail để xác thực'
           });
           }
+
+          if (user.isBlock === true){
+            return done(null, false, {
+              message: 'Tài khoản của bạn đã bị khóa. Xin vui lòng liên hệ admin để làm rõ.'
+          });
+          }
+
           req.session.isVerify = true;
 
           bcrypt.compare(password, user.password, async(err, result) =>{

@@ -61,6 +61,7 @@ module.exports.addToCart = async (req, res, next) => {
     let flagNewItem = true;
   
     try {
+     
       if (user) {
         const userCart = await cartService.findIdbyStatus(user._id, "waiting");
         
@@ -70,7 +71,7 @@ module.exports.addToCart = async (req, res, next) => {
         else 
           cart = userCart;
       }
-  
+      
       const product = await productService.findbySlugname(slugName);
   
       if (!product) 

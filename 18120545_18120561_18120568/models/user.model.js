@@ -61,7 +61,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "",
       },
-    
+      isBlock: {
+        type: Boolean,
+        default: false,
+      },
 }); 
 
 module.exports = mongoose.model('User', userSchema)
