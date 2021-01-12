@@ -299,8 +299,9 @@ module.exports.viewCheckout = async (req, res, next) =>{
 //log out
 exports.logout = (req, res, next) => {
    
+    console.log(123);
     req.session.destroy();;
-   
+    
     req.logout();
     res.redirect("/");
   };
