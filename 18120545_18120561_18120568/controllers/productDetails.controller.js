@@ -17,11 +17,9 @@ exports.detail = async(req, res, next) => {
             pathImages: product.images,
             price: product.price,
             title: product.name,
-            comments: product.comments,
+            comments: product.comments.reverse(),
             product: product
         });
-        var comment = product.comments;
-        console.log(comment[3]);
     })
     
 };

@@ -2,7 +2,7 @@ const { findOneAndDelete } = require("./cart.model");
 const ProdMongoose = require("./product.model");
 
 module.exports.listAllProduct = async() => {
-    return await ProdMongoose.find({});
+    return await ProdMongoose.find({}, ['producer', 'category'], function (err, docs) {});
 }
 
 module.exports.listProdPagination = async(filter, pageNumber, itemPerPage) => {

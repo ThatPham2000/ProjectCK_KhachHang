@@ -372,37 +372,52 @@
 						<div class="tab-pane fade active in" id="reviews" >
 							<div class="col-sm-12">
 								<ul>
+									{{#if user}}
+									<li><a href=""><i class="fa fa-user"></i>{{user.name}}</a></li>
+									{{/if}}
 									<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
 									<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
 									<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
+									
 								</ul>
 								<p><b>Write Your Review</b></p>
 								
 								<form method="POST" onsubmit="return doComment(this);">
 									<input type="hidden" name="product_id" value={{id}} />
-
+									{{#if user}}
+									<h5 class="mt-0" style="font-size: 15px;">{{user.name}}</h5>
+									<input type="hidden" name="username" value={{user.name}} />
+									{{else}}
 									<div class="form-group">
 										<input placeholder="Your Name" class="form-control" name="username"/>		
-									</div>		
-
+									</div>	
+									{{/if}}	
 									<div class="form-group">
 										<textarea class="form-control" name="comment" ></textarea>
 									</div>			
 									
 									<b>Rating: </b> <img src="/images/product-details/rating.png" alt="" />
-									<button type="submit" class="btn btn-primary pull-right">Submit</button>
+									<button type="submit" onsubmit="/cart/{{product.slugName}}"class="btn btn-primary pull-right">Submit</button>
 									
 								</form>
 				
 							</div>
 							<!-- Comments -->
+							
 							{{#each comments}}
-							<div class="media mb-4">
-								<img class="d-flex mr-3" src="../public/images/product-details/profile.png" alt="">
+							{{!-- <div class="col-mb-4">
+								<img class="img-responsive img-rounded" src="http://placehold.it/50x50" alt="" style="height: 50px;width:50px;">
 								<div class="media-body">
-									<h5 class="mt-0">{{username}}</h5>
-									<h6 class="mt - 0">{{comment}}</h6>
+									<b class="mt - 1" style="">{{username}}</b>
+									<h6 class="mt-0">{{comment}}</h6>
 								</div>
+							</div> --}}
+							<div class="media col-sm mb-4">
+  							<img class="align-self-start mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+  							<div class="media-body">
+  						  		<h5 class="mt-0" style="font-size: 15px;">{{username}}</h5>
+    							<p style="font-size: 12px;">{{comment}}</p>
+ 							 </div>
 							</div>
 							{{/each}}
 							
@@ -462,7 +477,7 @@
 												<img src="/images/home/recommend3.jpg" alt="" />
 												<h2>$56</h2>
 												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+												<button type="button" onsubmit="" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
 											</div>
 										</div>
 									</div>
@@ -520,11 +535,9 @@
 		</div>
 	</div>
 	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </section>

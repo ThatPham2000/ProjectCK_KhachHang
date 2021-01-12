@@ -11,12 +11,16 @@ module.exports.listProductPagination = async(req, res) => {
     const page = +req.query.page || 1;
     const Category = req.query.category;
     const Name = req.query.name;
+    const Producer = req.query.producer;
     const Query = {};
     if (Category) {
         Query.category = Category;
     }
     if (Name) {
         Query.name = Name;
+    }
+    if (Producer){
+        Query.producer = Producer;
     }
     const pagination = await ProductService.listProdPagination(Query, page, 12);
     res.render('shop', {
