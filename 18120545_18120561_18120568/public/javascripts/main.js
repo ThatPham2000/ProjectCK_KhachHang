@@ -70,7 +70,7 @@ $('input[name=password2]').blur(function (e) {
 });
 
 
-$('#sign-up').on('click', function (e) {
+$('#sign-up').one('click', function (e) {
     e.preventDefault();
     if ($('.d-block.text-danger').length) return;
     
@@ -107,7 +107,7 @@ $('body>section>div.container>div.sign-up>form')
 					if (data.msg === 'error') {
 						curr.next().removeClass('d-none');
 						curr.next().addClass('d-block text-danger');
-           
+            
 						curr.next().html(data[key]);
 						curr.next().css('font-size', '12px');
 						curr.next().css('margin', '-10px 0 10px');
