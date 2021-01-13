@@ -69,11 +69,12 @@ $('input[name=password2]').blur(function (e) {
     }
 });
 
-$('#sign-up').one('click', function (e) {
+
+$('#sign-up').on('click', function (e) {
     e.preventDefault();
     if ($('.d-block.text-danger').length) return;
     
-    $(this).click();
+    $(this).submit();
 });
 
 $('input[name=password2]').click(function () {
@@ -346,7 +347,74 @@ const modalCheckout = (data) => {
         </div>`;
 };
 
+$('.add-to-like').click(function (e) {
+	e.preventDefault();
 
+	// If not sign in
+	if ($('a[href="/buyer/login"]').text() === 'Login') {
+    console.log(123123);
+    const re = confirm("Please login to add a favorite product.");
+    if (re == true){
+      window.location.replace("/buyer/login")
+    }
+		return;
+	}
+
+
+	const slugName = $(this).attr('value');
+	const url = `/user/account/like/${slugName}`;
+
+	$.post(url, {}, function (data, status) {
+		if (data.msg === 'success' && status === 'success') {
+			const oldVal = parseInt($('.cart-count-like').html().slice(1));
+			$('.cart-count-like').html(`(${oldVal + 1})`);
+		}
+	});
+
+	setTimeout(1000);
+});
+// Post unlike
+$('.trash-like').click(function (e) {
+	e.preventDefault();
+
+	const value = $(this).attr('value');
+
+	if (parseInt(value) === 0) {
+		const re = confirm(
+			'Are you sure you want to remove items from your wishlist?'
+		);
+		if (re == false) return false;
+		$(this).parent().parent().css("display", "none");
+
+		/* Check empty */
+		$('.table.table-bordered > .align-middle tr').not('tr[style="display: none;"]')
+			.length === 0 && wishlistEmpty();
+	}
+
+	const slugName = $(this).attr('name');
+	const url = `/user/account/unlike/${slugName}`;
+
+	$.post(url, {}, function (data, status) {
+		if (data.msg === 'success' && status === 'success') {
+			$('.cart-count-like').html(`(${data.data.length})`);
+
+		}
+	});
+});
+/* Display wishlist empty */
+const wishlistEmpty = () => {
+	$('.table.table-bordered').html(`
+      <h3>No favorite products!</h3>
+			<h6 class="pt-3">
+				<span
+					><a class="text-success" style = "text-align: center;" href="/"
+						>Continue shopping</a
+					></span
+				>
+      </h6>`);
+  $('.table.table-bordered').addClass("center-table");
+	$('.table.table-bordered').removeClass('table table-bordered');
+};
 $('#reset-password2').on('click', function (e) {
   e.preventDefault();
   const pass1 = $('input[name=password]').val();

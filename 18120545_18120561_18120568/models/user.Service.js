@@ -24,3 +24,12 @@ module.exports.updateAddress = async(email, address, district, city) => {
         user.save();
     })
 }
+
+module.exports.updateOneUser = async(_id, user) =>{
+
+    await User.updateOne(
+        {_id: _id},
+        {
+            $set: user
+        })
+}

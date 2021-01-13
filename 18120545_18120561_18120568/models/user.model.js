@@ -65,6 +65,10 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
       },
+    likes:{
+        type: Array,
+        default: [],
+    }
 }); 
 
 module.exports = mongoose.model('User', userSchema)
