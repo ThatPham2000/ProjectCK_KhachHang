@@ -957,6 +957,26 @@ h2.title {
     width: 100%;
 }
 
+.product-overlay .add-detail {
+    background: #fff;
+    border: 0 none;
+    border-radius: 0;
+    color: #FE980F;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.add-detail-none_hover {
+    background: #F5F5ED;
+    border: 0 none;
+    border-radius: 0;
+    color: #696763;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
 .product-overlay .add-to-cart {
     background: #fff;
     border: 0 none;
@@ -971,7 +991,10 @@ h2.title {
     background: #fff;
     color: #FE980F;
 }
-
+.product-overlay .add-detail:hover {
+    background: #fff;
+    color: #FE980F;
+}
 .product-overlay p {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
@@ -2783,3 +2806,4 @@ textarea {
 
     background-color: #FE980F;
   }
+
