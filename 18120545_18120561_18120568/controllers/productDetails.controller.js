@@ -4,14 +4,14 @@ const Product= require('../models/product.model');
 exports.detail = async(req, res, next) => {
     const commentsPerPage = 3;
     // Get books from model
-    
-    Product.findById(req.params.id)
+    console.log(req.params.slugname)
+    Product.findOne({"slugName" : req.params.slugname})
     .then(product =>{
         if (!product.countView){
 	         product.countView = 1;
          }else{
 	          product.countView++;
-         }
+        }
         //Pass data to view to display list of books
         res.render('product-details', {
             id: product._id,
