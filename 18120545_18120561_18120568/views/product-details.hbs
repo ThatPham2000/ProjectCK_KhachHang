@@ -1,11 +1,11 @@
-
 <section>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="left-sidebar">
 					<h2>Category</h2>
-					<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+					<div class="panel-group category-products" id="accordian">
+						<!--category-productsr-->
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
@@ -53,7 +53,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
@@ -110,9 +110,11 @@
 								<h4 class="panel-title"><a href="#">Shoes</a></h4>
 							</div>
 						</div>
-					</div><!--/category-products-->
-				
-					<div class="brands_products"><!--brands_products-->
+					</div>
+					<!--/category-products-->
+
+					<div class="brands_products">
+						<!--brands_products-->
 						<h2>Brands</h2>
 						<div class="brands-name">
 							<ul class="nav nav-pills nav-stacked">
@@ -125,88 +127,101 @@
 								<li><a href=""> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
 							</ul>
 						</div>
-					</div><!--/brands_products-->
-					
-					<div class="price-range"><!--price-range-->
+					</div>
+					<!--/brands_products-->
+
+					<div class="price-range">
+						<!--price-range-->
 						<h2>Price Range</h2>
 						<div class="well">
-							 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-							 <b>$ 0</b> <b class="pull-right">$ 600</b>
+							<input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
+								data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
+							<b>$ 0</b> <b class="pull-right">$ 600</b>
 						</div>
-					</div><!--/price-range-->
-					
-					<div class="shipping text-center"><!--shipping-->
+					</div>
+					<!--/price-range-->
+
+					<div class="shipping text-center">
+						<!--shipping-->
 						<img src="/images/home/shipping.jpg" alt="" />
-					</div><!--/shipping-->
-					
+					</div>
+					<!--/shipping-->
+
 				</div>
 			</div>
-			
+
 			<div class="col-sm-9 padding-right">
-				<div class="product-details"><!--product-details-->
-				
+				<div class="product-details">
+					<!--product-details-->
+
 					<div class="col-sm-5">
 						<div class="view-product">
-							<img src={{pathImages.[0]}} alt="" >
+							<img src={{pathImages.[0]}} alt="">
 							<h3>ZOOM</h3>
 						</div>
 						<div id="similar-product" class="carousel slide" data-ride="carousel">
-							
-							  <!-- Wrapper for slides -->
-								<div class="carousel-inner">
-									<div class="item active">
-										{{#each pathImages}}
-									  	<a href=""><img src={{this}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  	{{/each}}
-									</div>
-									<div class="item">
-									  {{#each pathImages}}
-									  	<a href=""><img src={{this}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  	{{/each}}
-									</div>
-									<div class="item">
-									  {{#each pathImages}}
-									  	<a href=""><img src={{this}} alt="" style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
-									  	{{/each}}
-									</div>
-									
+
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<div class="item active">
+									{{#each pathImages}}
+									<a href=""><img src={{this}} alt=""
+											style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									{{/each}}
+								</div>
+								<div class="item">
+									{{#each pathImages}}
+									<a href=""><img src={{this}} alt=""
+											style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									{{/each}}
+								</div>
+								<div class="item">
+									{{#each pathImages}}
+									<a href=""><img src={{this}} alt=""
+											style=" border: 1px solid #ddd;border-radius: 4px;padding: 5px;width: 90px;"></a>
+									{{/each}}
 								</div>
 
-							  <!-- Controls -->
-							  <a class="left item-control" href="#similar-product" data-slide="prev">
+							</div>
+
+							<!-- Controls -->
+							<a class="left item-control" href="#similar-product" data-slide="prev">
 								<i class="fa fa-angle-left"></i>
-							  </a>
-							  <a class="right item-control" href="#similar-product" data-slide="next">
+							</a>
+							<a class="right item-control" href="#similar-product" data-slide="next">
 								<i class="fa fa-angle-right"></i>
-							  </a>
+							</a>
 						</div>
 
 					</div>
 					<div class="col-sm-7">
-						<div class="product-information"><!--/product-information-->
+						<div class="product-information">
+							<!--/product-information-->
 							<img src="/images/product-details/rating.png" class="newarrival" alt="" />
 							<h2>{{title}}</h2>
 							<p>Web ID: 1089772</p>
 							<img src="/images/product-details/rating.png" alt="" />
 							<span>
 								<span>{{price}} VND</span>
-								{{#each related_products}}
-								<h1>1</h1>
-								{{/each}}
 								<label>Quantity:</label>
 								<input type="text" value="3" />
-								<a href="#" class="btn btn-default add-to-cart" value = "{{product.slugName}}"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+								<a href="#" class="btn btn-default add-to-cart" value="{{product.slugName}}"><i
+										class="fa fa-shopping-cart"></i>Add to cart</a>
 							</span>
 							<p><b>Availability:</b> In Stock</p>
 							<p><b>Condition:</b> New</p>
 							<p><b>Brand:</b> E-SHOPPER</p>
-							<a href=""><img src="/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
-						</div><!--/product-information-->
+							<a href=""><img src="/images/product-details/share.png" class="share img-responsive"
+									alt="" /></a>
+						</div>
+						<!--/product-information-->
 					</div>
-				
-				</div><!--/product-details-->
-				
-				<div class="category-tab shop-details-tab"><!--category-tab-->
+
+				</div>
+				<!--/product-details-->
+
+				<div class="category-tab shop-details-tab">
+					<!--category-tab-->
 					<div class="col-sm-12">
 						<ul class="nav nav-tabs">
 							<li><a href="#details" data-toggle="tab">Details</a></li>
@@ -216,7 +231,7 @@
 						</ul>
 					</div>
 					<div class="tab-content">
-						<div class="tab-pane fade" id="details" >
+						<div class="tab-pane fade" id="details">
 							<div class="col-sm-3">
 								<div class="product-image-wrapper">
 									<div class="single-products">
@@ -224,7 +239,8 @@
 											<img src="/images/home/gallery1.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+											<button type="button" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</button>
 										</div>
 									</div>
 								</div>
@@ -236,7 +252,8 @@
 											<img src="/images/home/gallery2.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<button type="button" class="btn btn-default add-to-cart" ><i class="fa fa-shopping-cart"></i>Add to cart</button>
+											<button type="button" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</button>
 										</div>
 									</div>
 								</div>
@@ -248,7 +265,8 @@
 											<img src="/images/home/gallery3.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+											<button type="button" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</button>
 										</div>
 									</div>
 								</div>
@@ -260,14 +278,15 @@
 											<img src="/images/home/gallery4.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+											<button type="button" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						
-						<div class="tab-pane fade" id="companyprofile" >
+
+						<div class="tab-pane fade" id="companyprofile">
 							<div class="col-sm-3">
 								<div class="product-image-wrapper">
 									<div class="single-products">
@@ -275,7 +294,8 @@
 											<img src="/images/home/gallery1.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+											<button type="button" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</button>
 										</div>
 									</div>
 								</div>
@@ -287,7 +307,8 @@
 											<img src="/images/home/gallery3.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+											<button type="button" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</button>
 										</div>
 									</div>
 								</div>
@@ -299,7 +320,8 @@
 											<img src="/images/home/gallery2.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+											<button type="button" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</button>
 										</div>
 									</div>
 								</div>
@@ -311,14 +333,15 @@
 											<img src="/images/home/gallery4.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+											<button type="button" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						
-						<div class="tab-pane fade" id="tag" >
+
+						<div class="tab-pane fade" id="tag">
 							<div class="col-sm-3">
 								<div class="product-image-wrapper">
 									<div class="single-products">
@@ -326,7 +349,8 @@
 											<img src="/images/home/gallery1.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+											<button type="button" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</button>
 										</div>
 									</div>
 								</div>
@@ -338,7 +362,8 @@
 											<img src="/images/home/gallery2.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+											<button type="button" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</button>
 										</div>
 									</div>
 								</div>
@@ -350,7 +375,8 @@
 											<img src="/images/home/gallery3.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+											<button type="button" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</button>
 										</div>
 									</div>
 								</div>
@@ -362,14 +388,15 @@
 											<img src="/images/home/gallery4.jpg" alt="" />
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+											<button type="button" class="btn btn-default add-to-cart"><i
+													class="fa fa-shopping-cart"></i>Add to cart</button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						
-						<div class="tab-pane fade active in" id="reviews" >
+
+						<div class="tab-pane fade active in" id="reviews">
 							<div class="col-sm-12">
 								<ul>
 									{{#if user}}
@@ -378,10 +405,10 @@
 									<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
 									<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
 									<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
-									
+
 								</ul>
 								<p><b>Write Your Review</b></p>
-								
+
 								<form method="POST" onsubmit="return doComment(this);">
 									<input type="hidden" name="product_id" value={{id}} />
 									{{#if user}}
@@ -389,139 +416,87 @@
 									<input type="hidden" name="username" value={{user.name}} />
 									{{else}}
 									<div class="form-group">
-										<input placeholder="Your Name" class="form-control" name="username"/>		
-									</div>	
-									{{/if}}	
+										<input placeholder="Your Name" class="form-control" name="username" />
+									</div>
+									{{/if}}
 									<div class="form-group">
-										<textarea class="form-control" name="comment" ></textarea>
-									</div>			
-									
+										<textarea class="form-control" name="comment"></textarea>
+									</div>
+
 									<b>Rating: </b> <img src="/images/product-details/rating.png" alt="" />
-									<button type="submit" onsubmit="/cart/{{product.slugName}}"class="btn btn-primary pull-right">Submit</button>
-									
+									<button type="submit" onsubmit="/cart/{{product.slugName}}"
+										class="btn btn-primary pull-right">Submit</button>
+
 								</form>
-				
+
 							</div>
 							<!-- Comments -->
-							
+
 							{{#each comments}}
 							{{!-- <div class="col-mb-4">
-								<img class="img-responsive img-rounded" src="http://placehold.it/50x50" alt="" style="height: 50px;width:50px;">
+								<img class="img-responsive img-rounded" src="http://placehold.it/50x50" alt=""
+									style="height: 50px;width:50px;">
 								<div class="media-body">
 									<b class="mt - 1" style="">{{username}}</b>
 									<h6 class="mt-0">{{comment}}</h6>
 								</div>
 							</div> --}}
 							<div class="media col-sm mb-4">
-  							<img class="align-self-start mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-  							<div class="media-body">
-  						  		<h5 class="mt-0" style="font-size: 15px;">{{username}}</h5>
-    							<p style="font-size: 12px;">{{comment}}</p>
- 							 </div>
+								<img class="align-self-start mr-3 rounded-circle" src="http://placehold.it/50x50"
+									alt="">
+								<div class="media-body">
+									<h5 class="mt-0" style="font-size: 15px;">{{username}}</h5>
+									<p style="font-size: 12px;">{{comment}}</p>
+								</div>
 							</div>
 							{{/each}}
-							
+
 						</div>
 						<script>
-							function doComment(form){
+							function doComment(form) {
 								$.ajax({
 									url: "/do-comment",
 									method: "POST",
-									data: {username: form.username.value, comment: form.comment.value,
-									post_id: form.product_id.value},
-									success: function (respone){
-									alert(respone);
+									data: {
+										username: form.username.value, comment: form.comment.value,
+										post_id: form.product_id.value
+									},
+									success: function (respone) {
+										alert(respone);
 									}
 								});
-							return false;
+								return false;
 							}
 						</script>
-						
+
 					</div>
-				</div><!--/category-tab-->
-				
+				</div>
+				<!--/category-tab-->
+
 				<div class="recommended_items"><!--recommended_items-->
 					<h2 class="title text-center">recommended items</h2>
 					
 					<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner">
+							{{#each relatedProducts}}
 							<div class="item active">	
 								<div class="col-sm-4">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="/images/home/recommend1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="/images/home/recommend2.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="/images/home/recommend3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" onsubmit="" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+												<img src="{{images.[0]}}" alt="" />
+												<h2>{{name}}</h2>
+												<p>{{price}}</p>
+												<a href="/product-details/{{slugName}}" class="btn btn-default add-detail-none_hover"><i class="fa fa-search-minus"></i>Detail</a>
+												<button value="{{slugName}}" type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="item">	
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="/images/home/recommend1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="/images/home/recommend2.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="/images/home/recommend3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+							{{/each}}
+							
+						
 						 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
 							<i class="fa fa-angle-left"></i>
 						  </a>
@@ -530,14 +505,22 @@
 						  </a>			
 					</div>
 				</div><!--/recommended_items-->
-				
-			</div>
-		</div>
-	</div>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+				<!-- Latest compiled and minified CSS -->
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+					integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+					crossorigin="anonymous">
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+					integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+					crossorigin="anonymous"></script>
+				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+					integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+					crossorigin="anonymous"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+					integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+					crossorigin="anonymous"></script>
+				<script>
+					
+
+				</script>
 
 </section>

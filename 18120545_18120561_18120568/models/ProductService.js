@@ -1,4 +1,5 @@
 const { findOneAndDelete } = require("./cart.model");
+const { find } = require("./product.model");
 const ProdMongoose = require("./product.model");
 
 function parsePrice(strPrice){
@@ -33,4 +34,5 @@ module.exports.countProducts =  async (_id) =>{
         product.save();
     })
 }
+
 
