@@ -435,11 +435,11 @@ const CartEmpty = () =>{
             </div>`)
             $('.main-cart').removeClass('main-cart');
 }
-$('#reset-password2').on('click', function (e) {
+$('#reset-password2').one('click', function (e) {
   e.preventDefault();
   const pass1 = $('input[name=password]').val();
   const pass2 = $('input[name=password2]').val();
   if (pass1 !== pass2) return;
   
-  $(this).click();
+  $(this).submit();
 });
