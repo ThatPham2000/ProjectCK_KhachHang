@@ -1,8 +1,7 @@
-
 <section id="advertisement">
-<div class="container">
-	<img src="images/shop/advertisement.jpg" alt="" />
-</div>
+    <div class="container">
+        <img src="images/shop/advertisement.jpg" alt="" />
+    </div>
 </section>
 
 <section>
@@ -43,13 +42,77 @@
 					<h2>Brands</h2>
 					<div class="brands-name">
 						<ul class="nav nav-pills nav-stacked">
-							<li><a href=""> <span class="pull-right">(50)</span>Acne</a></li>
-							<li><a href=""> <span class="pull-right">(56)</span>Grüne Erde</a></li>
-							<li><a href=""> <span class="pull-right">(27)</span>Albiro</a></li>
-							<li><a href=""> <span class="pull-right">(32)</span>Ronhill</a></li>
-							<li><a href=""> <span class="pull-right">(5)</span>Oddmolly</a></li>
-							<li><a href=""> <span class="pull-right">(9)</span>Boudestijn</a></li>
-							<li><a href=""> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
+                            {{#equal Category 'PC'}}
+                            <li><a href="/shop?category=PC&producer=Dell"> <span class="pull-right">(50)</span>DELL</a></li>
+							<li><a href="/shop?category=PC&producer=Lenovo"> <span class="pull-right">(56)</span>LENOVO</a></li>
+							<li><a href="/shop?category=PC&producer=HP"> <span class="pull-right">(27)</span>HP</a></li>
+							<li><a href="/shop?category=PC&producer=ACER"> <span class="pull-right">(32)</span>ACER</a></li>
+							<li><a href="/shop?category=PC&producer=Phong Vũ"> <span class="pull-right">(5)</span>PHONG VŨ</a></li>
+							<li><a href="/shop?category=PC&producer=INTEL"> <span class="pull-right">(9)</span>INTEL</a></li>
+							<li><a href="/shop?category=PC&producer=ASUS"> <span class="pull-right">(4)</span>ASUS</a></li>
+                            <li><a href="/shop?category=PC&producer=MSI"> <span class="pull-right">(4)</span>MSI</a></li>
+                            <li><a href="/shop?category=PC&producer=APPLE"> <span class="pull-right">(4)</span>APPLE</a></li>
+                            {{/equal}}
+                            {{#equal Category 'mobile'}}
+                            <li><a href="/shop?category=mobile&producer=APPLE"> <span class="pull-right">(50)</span>APPLE</a></li>
+							<li><a href="/shop?category=mobile&producer=SAMSUNG"> <span class="pull-right">(56)</span>SAMSUNG</a></li>
+							<li><a href="/shop?category=mobile&producer=Realme"> <span class="pull-right">(27)</span>REALME</a></li>
+							<li><a href="/shop?category=mobile&producer=XIAOMI"> <span class="pull-right">(32)</span>XIAOMI</a></li>
+							<li><a href="/shop?category=mobile&producer=NOKIA"> <span class="pull-right">(5)</span>NOKIA</a></li>
+							<li><a href="/shop?category=mobile&producer=Huawei"> <span class="pull-right">(9)</span>HUAWEI</a></li>
+							<li><a href="/shop?category=mobile&producer=OPPO"> <span class="pull-right">(4)</span>OPPO</a></li>
+                            <li><a href="/shop?category=mobile&producer=Lenovo"> <span class="pull-right">(4)</span>LENOVO</a></li>
+                            <li><a href="/shop?category=mobile&producer=AMAZFIT"> <span class="pull-right">(4)</span>AMAZFIT</a></li>
+                            <li><a href="/shop?category=mobile&producer=ELECOM"> <span class="pull-right">(4)</span>ELECOM</a></li>
+                            <li><a href="/shop?category=mobile&producer=SOTATE"> <span class="pull-right">(4)</span>SOTATE</a></li>
+                            <li><a href="/shop?category=mobile&producer=Garmin"> <span class="pull-right">(4)</span>GARMIN</a></li>
+                            {{/equal}}
+                            {{#equal Category 'laptop'}}
+                            <li><a href="/shop?category=laptop&producer=APPLE"> <span class="pull-right">(50)</span>APPLE</a></li>
+							<li><a href="/shop?category=laptop&producer=ACER"> <span class="pull-right">(56)</span>ACER</a></li>
+							<li><a href="/shop?category=laptop&producer=ASUS"> <span class="pull-right">(27)</span>ASUS</a></li>
+							<li><a href="/shop?category=laptop&producer=HP"> <span class="pull-right">(32)</span>HP</a></li>
+							<li><a href="/shop?category=laptop&producer=Dell"> <span class="pull-right">(5)</span>DELL</a></li>
+							<li><a href="/shop?category=laptop&producer=Lenovo"> <span class="pull-right">(9)</span>LENOVO</a></li>
+							<li><a href="/shop?category=laptop&producer=LG"> <span class="pull-right">(4)</span>LG</a></li>
+                            <li><a href="/shop?category=laptop&producer=MSI"> <span class="pull-right">(4)</span>MSI</a></li>
+                            <li><a href="/shop?category=laptop&producer=Dell"> <span class="pull-right">(4)</span>DELL</a></li>
+                            {{/equal}}
+                            {{#equal Category 'Network equipment - Security'}}
+                            <li><a href="/shop?category=Network equipment - Security&producer=ASUS"> <span class="pull-right">(50)</span>ASUS</a></li>
+							<li><a href="/shop?category=Network equipment - Security&producer=TOTO LINK"> <span class="pull-right">(56)</span>TOTO LINK</a></li>
+							<li><a href="/shop?category=Network equipment - Security&producer=HIKvision"> <span class="pull-right">(27)</span>HIK VISION</a></li>
+							<li><a href="/shop?category=Network equipment - Security&producer=TPLINK"> <span class="pull-right">(32)</span>TPLINK</a></li>
+							<li><a href="/shop?category=Network equipment - Security&producer=TENDA"> <span class="pull-right">(5)</span>TENDA</a></li>
+							<li><a href="/shop?category=Network equipment - Security&producer=D-LINK"> <span class="pull-right">(9)</span>D-LINK</a></li>
+							<li><a href="/shop?category=Network equipment - Security&producer=KBvision"> <span class="pull-right">(4)</span>KB VISION</a></li>
+                            <li><a href="/shop?category=Network equipment - Security&producer=Smanos"> <span class="pull-right">(4)</span>SMANOS</a></li>
+                            <li><a href="/shop?category=Network equipment - Security&producer=Aeotec"> <span class="pull-right">(4)</span>AEOTEC</a></li>
+                            <li><a href="/shop?category=Network equipment - Security&producer=ZK Teco"> <span class="pull-right">(4)</span>ZK TECO</a></li>
+                            <li><a href="/shop?category=Network equipment - Security&producer=XIAOMI"> <span class="pull-right">(4)</span>XIAOMI</a></li>
+                            <li><a href="/shop?category=Network equipment - Security&producer=QUESTEK"> <span class="pull-right">(4)</span>QUESTEK</a></li>
+                            <li><a href="/shop?category=Network equipment - Security&producer=EZVIZ"> <span class="pull-right">(4)</span>EZVIZ</a></li>
+                            <li><a href="/shop?category=Network equipment - Security&producer=Panasonic"> <span class="pull-right">(4)</span>PANASONIC</a></li>
+                            {{/equal}}
+                            {{#equal Category 'Components'}}
+                            <li><a href="/shop?category=Components&producer=ASUS"> <span class="pull-right">(50)</span>ASUS</a></li>
+							<li><a href="/shop?category=Components&producer=Cooler Master"> <span class="pull-right">(56)</span>COOLER MASTER</a></li>
+							<li><a href="/shop?category=Components&producer=NVIDIA"> <span class="pull-right">(27)</span>NVIDIA</a></li>
+							<li><a href="/shop?category=Components&producer=SEAGATE"> <span class="pull-right">(32)</span>SEAGATE</a></li>
+							<li><a href="/shop?category=Components&producer=MSI"> <span class="pull-right">(5)</span>MSI</a></li>
+							<li><a href="/shop?category=Components&producer=AMD"> <span class="pull-right">(9)</span>AMD</a></li>
+							<li><a href="/shop?category=Components&producer=WD"> <span class="pull-right">(4)</span>WD</a></li>
+                            <li><a href="/shop?category=Components&producer=CORSAIR"> <span class="pull-right">(4)</span>CORSAIR</a></li>
+                            <li><a href="/shop?category=Components&producer=SANDISK"> <span class="pull-right">(4)</span>SANDISK</a></li>
+                            <li><a href="/shop?category=Components&producer=INTEL"> <span class="pull-right">(4)</span>INTEL</a></li>
+                            <li><a href="/shop?category=Components&producer=KINGSTON"> <span class="pull-right">(4)</span>KINGSTON</a></li>
+                            <li><a href="/shop?category=Components&producer=SAMA"> <span class="pull-right">(4)</span>SAMA</a></li>
+                            <li><a href="/shop?category=Components&producer=G.SKILL"> <span class="pull-right">(4)</span>G.SKILL</a></li>
+                            <li><a href="/shop?category=Components&producer=GIGABYTE"> <span class="pull-right">(4)</span>GIGABYTE</a></li>
+                            <li><a href="/shop?category=Components&producer=KINGMAX"> <span class="pull-right">(4)</span>KINGMAX</a></li>
+                            <li><a href="/shop?category=Components&producer=SAMSUNG"> <span class="pull-right">(4)</span>SAMSUNG</a></li>
+                            {{/equal}}
+    
 						</ul>
 					</div>
 				</div><!--/brands_products-->
@@ -76,29 +139,36 @@
                         <div class="col-sm-4">
                         <div class="product-image-wrapper">
                             <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="{{images.[0]}}" alt="" style="border: 1px solid #ddd;  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);"/>
+                                <div class="productinfo text-center">
+                                    <img src="{{images.[0]}}" alt=""
+                                        style="border: 1px solid #ddd;  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);" />
+                                    <h2>{{price}}</h2>
+                                    <p style="width:600px;overflow:hidden;height:50px;line-height:50px;">{{name}}</p>
+
+
+                                    <a href="/product-details/{{slugName}}"
+                                        class="btn btn-default add-detail-none_hover"><i
+                                            class="fa fa-search-minus"></i>Detail</a>
+
+                                    <a href="#" class="btn btn-default add-to-cart" value="{{slugName}}"><i
+                                            class="fa fa-shopping-cart"></i>Add to cart</a>
+
+                                </div>
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
                                         <h2>{{price}}</h2>
-                                        <p style="width:600px;overflow:hidden;height:50px;line-height:50px;">{{name}}</p>
-                                       
-									
-									        <a href="/product-details/{{slugName}}" class="btn btn-default add-detail-none_hover"><i class="fa fa-search-minus"></i>Detail</a>
-								        
-                                            <a href="#" class="btn btn-default add-to-cart" value = "{{slugName}}"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        
-                                    </div>
-                                    <div class="product-overlay">
-                                        <div class="overlay-content">
-                                            <h2>{{price}}</h2>
-                                            <p>{{name}}</p>
-                                            <div class = 'd-flex justify-content-center'>
-									
-									        <a href="/product-details/{{slugName}}" class="btn btn-default add-detail"><i class="fa fa-search-minus"></i>Detail</a>
-								        
-                                       <a href="#" class="btn btn-default add-to-cart " value = "{{slugName}}"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
+                                        <p>{{name}}</p>
+                                        <div class='d-flex justify-content-center'>
+
+                                            <a href="/product-details/{{slugName}}"
+                                                class="btn btn-default add-detail"><i
+                                                    class="fa fa-search-minus"></i>Detail</a>
+
+                                            <a href="#" class="btn btn-default add-to-cart " value="{{slugName}}"><i
+                                                    class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                     </div>
+                                </div>
                             </div>
                             <div class="choose">
                                 <ul class="nav nav-pills nav-justified">
@@ -109,31 +179,31 @@
                         </div>
                     </div>
                     {{/each}}
-				
-				
-				
-				<div class="pagination">
+
+
+
+                    <div class="pagination">
+                        {{#if Name}}
                         {{#if hasPrevPage}}
                         {{#if Category}}
-                            <a href="/shop?category={{Category}}&page={{prevPage}}">&laquo;</a>
+                            <a href="/shop?name={{Name}}&category={{Category}}&page={{prevPage}}&producer={{producer}}">&laquo;</a>
                         {{else}}
-                            <a href="/shop?page={{prevPage}}">&laquo;</a>
+                            <a href="/name={{Name}}&shop?page={{prevPage}}&producer={{producer}}">&laquo;</a>
                         {{/if}}
                         {{/if}}
-
                         {{#if hasPrevPage1}}
                         {{#if Category}}
-                            <a href="/shop?category={{Category}}&page={{prevPage1}}">{{prevPage1}}</a>
+                            <a href="/shop?name={{Name}}&category={{Category}}&page={{prevPage1}}&producer={{producer}}">{{prevPage1}}</a>
                         {{else}}
-                            <a href="/shop?page={{prevPage1}}">{{prevPage1}}</a>
+                            <a href="/shop?name={{Name}}&page={{prevPage1}}&producer={{producer}}">{{prevPage1}}</a>
                         {{/if}}
                         {{/if}}
 
                         {{#if hasPrevPage2}}
                         {{#if Category}}
-                            <a href="/shop?category={{Category}}&page={{prevPage2}}">{{prevPage2}}</a>
+                            <a href="/shop?name={{Name}}&category={{Category}}&page={{prevPage2}}&producer={{producer}}">{{prevPage2}}</a>
                         {{else}}
-                            <a href="/shop?page={{prevPage2}}">{{prevPage2}}</a>
+                            <a href="/shop?name={{Name}}&page={{prevPage2}}&producer={{producer}}">{{prevPage2}}</a>
                         {{/if}}
                         {{/if}}
 
@@ -141,32 +211,33 @@
 
                         {{#if hasNextPage1}}
                         {{#if Category}}
-                            <a href="/shop?category={{Category}}&page={{nextPage1}}">{{nextPage1}}</a>
+                            <a href="/shop?name={{Name}}&category={{Category}}&page={{nextPage1}}&producer={{producer}}">{{nextPage1}}</a>
                         {{else}}
-                            <a href="/shop?page={{nextPage1}}">{{nextPage1}}</a>
+                            <a href="/shop?name={{Name}}&page={{nextPage1}}&producer={{producer}}">{{nextPage1}}</a>
                         {{/if}}
                         {{/if}}
 
                         {{#if hasNextPage2}}
                         {{#if Category}}
-                            <a href="/shop?category={{Category}}&page={{nextPage2}}">{{nextPage2}}</a>
+                            <a href="/shop?name={{Name}}&category={{Category}}&page={{nextPage2}}&producer={{producer}}">{{nextPage2}}</a>
                         {{else}}
-                            <a href="/shop?page={{nextPage2}}">{{nextPage2}}</a>
+                            <a href="/shop?name={{Name}}&page={{nextPage2}}&producer={{producer}}">{{nextPage2}}</a>
                         {{/if}}
                         {{/if}}
 
                         {{#if hasNextPage}}
                         {{#if Category}}
-                            <a href="/shop?category={{Category}}&page={{nextPage}}">&raquo;</a>
+                            <a href="/shop?name={{Name}}&category={{Category}}&page={{nextPage}}&producer={{producer}}">&raquo;</a>
                         {{else}}
-                            <a href="/shop?page={{nextPage}}">&raquo;</a>
+                            <a href="/shop?name={{Name}}&page={{nextPage}}&producer={{producer}}">&raquo;</a>
+                        {{/if}}
                         {{/if}}
                         {{/if}}
                     </div>
-				
-			</div><!--features_items-->
-		</div>
-	</div>
-</div>
-</section>
 
+                </div>
+                <!--features_items-->
+            </div>
+        </div>
+    </div>
+</section>

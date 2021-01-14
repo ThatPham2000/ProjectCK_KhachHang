@@ -1,6 +1,7 @@
 const ProductService = require('../models/ProductService.js');
 const Product = require("../models/product.model");
 const ITEM_PER_PAGE = 12;
+const {parsePrice} = require('../utils/statistics');
 module.exports.index = async(req, res, next) => {
     const products = await ProductService.listAllProduct();
 
@@ -8,25 +9,42 @@ module.exports.index = async(req, res, next) => {
 }
 
 module.exports.listProductPagination = async(req, res) => {
+    
     const page = +req.query.page || 1;
     const Category = req.query.category;
     const Name = req.query.name;
     const Producer = req.query.producer;
+    const Rating = req.query.rating;
     const sort = req.query.sort;
     const Query = {};
     if (Category) {
         Query.category = Category;
     }
     if (Name) {
-        Query.name = Name;
+        const regex = new RegExp(escapeRegex(Name), 'gi');
+        Query.name = regex;
     }
-    if (Producer){
-        Query.producer = Producer;
+    if (Producer) {
+        const regex = new RegExp(escapeRegex(req.query.producer), 'gi');
+        Query.producer = regex;
+    }
+    if (Rating) {
+        Query.rating = Rating;
     }
 
     // const Products = await ProductService.listAllProduct();
     // res.send(Products);
     const pagination = await ProductService.listProdPagination(Query, page, 12, sort);
+    if(sort && sort === 'asc'){
+        pagination = pagination.sort((a, b) => {
+            return parsePrice(a.price) - parsePrice(b.price);
+        });
+    }else if(sort && sort === 'desc'){
+        pagination = pagination.sort((a,b) => {
+            return -parsePrice(a.price) + parsePrice(b.price);
+        });
+    }
+    res.locals.sort = sort || '';
     res.render('shop', {
         title: 'Shop',
         products: pagination.docs,
@@ -36,7 +54,7 @@ module.exports.listProductPagination = async(req, res) => {
         prevPage: pagination.prevPage,
         lastPage: pagination.totalPages,
         currentPage: pagination.page,
-        
+
 
         //index page
         hasPrevPage1: (pagination.page - 2 > 0 ? true : false),
@@ -49,6 +67,12 @@ module.exports.listProductPagination = async(req, res) => {
         nextPage2: pagination.page + 2,
 
         //Category
-        Category: Category
+        Category: Category,
+        producer: Producer,
+        Name: Name
     })
 }
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
