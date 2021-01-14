@@ -2,7 +2,15 @@ const { isValidObjectId } = require('mongoose');
 const productModel = require('../models/product.model');
 const Product= require('../models/product.model');
 const { statistic, parsePrice } = require('../utils/statistics');
+function paginate(array, page_size, page_number) {
+  // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
+  return array.slice((page_number - 1) * page_size, page_number * page_size);
+}
 exports.detail = async(req, res, next) => {
+  const page = parseInt(req.query.page) || 1;
+  const comment_per_page = 3;
+  var start = (page - 1) * comment_per_page;
+  var end = page * comment_per_page;
   try{
     
     const {slugname} = req.params;
@@ -10,18 +18,24 @@ exports.detail = async(req, res, next) => {
       slugName : slugname
     });
     
-    const{category, producer} = product;
+    const{category, producer, comments} = product;
     const relativeProducts = await Product.find({
       category,
       producer
     }).limit(9);
+    if (product.countView){
+      product.countView = 1;
+    }else{
+      product.countView++;
+    }
+   
     return res.render('product-details',{
       msg: 'success',
       id: product._id,
       pathImages: product.images,
       price: product.price,
       title: product.name,
-      comments: product.comments.reverse(),
+      comments: comments.reverse(),
       product: product,
       relatedProducts: relativeProducts || null,
     });
