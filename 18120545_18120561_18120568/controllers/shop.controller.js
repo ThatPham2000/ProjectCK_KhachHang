@@ -12,6 +12,7 @@ module.exports.listProductPagination = async(req, res) => {
     const Category = req.query.category;
     const Name = req.query.name;
     const Producer = req.query.producer;
+    const sort = req.query.sort;
     const Query = {};
     if (Category) {
         Query.category = Category;
@@ -22,7 +23,10 @@ module.exports.listProductPagination = async(req, res) => {
     if (Producer){
         Query.producer = Producer;
     }
-    const pagination = await ProductService.listProdPagination(Query, page, 12);
+
+    // const Products = await ProductService.listAllProduct();
+    // res.send(Products);
+    const pagination = await ProductService.listProdPagination(Query, page, 12, sort);
     res.render('shop', {
         title: 'Shop',
         products: pagination.docs,
@@ -32,6 +36,7 @@ module.exports.listProductPagination = async(req, res) => {
         prevPage: pagination.prevPage,
         lastPage: pagination.totalPages,
         currentPage: pagination.page,
+        
 
         //index page
         hasPrevPage1: (pagination.page - 2 > 0 ? true : false),

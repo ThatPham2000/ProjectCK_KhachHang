@@ -38,6 +38,12 @@ const productSchema = mongoose.Schema({
     enum: enumType,
     required: [true, "Type is required!"],
   },
+  category:{
+    type: String,
+    default: "",
+    enum: enumType,
+    required: [true, "Category is required!"],
+  },
   images: {
     type: Array,
     default: [],
@@ -109,6 +115,10 @@ const productSchema = mongoose.Schema({
   },
   isRemove: {
       type: Boolean,
+      default: 0,
+  },
+  priceInt:{
+      type: Number,
       default: 0,
   }
 });
