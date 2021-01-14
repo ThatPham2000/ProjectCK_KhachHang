@@ -33,7 +33,6 @@ const productSchema = mongoose.Schema({
     slug: "price",
   },
   type: {
-    // chua co
     type: String,
     default: "",
     enum: enumType,

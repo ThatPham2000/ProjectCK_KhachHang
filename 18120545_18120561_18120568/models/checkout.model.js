@@ -51,7 +51,6 @@ const checkoutSchema = mongoose.Schema({
     type: Array,
     default: [],
   },
-  // {itemId, name, price, quantity}
   totalQuantity: {
     type: Number,
     default: 0,
@@ -62,7 +61,7 @@ const checkoutSchema = mongoose.Schema({
   },
   shippingFee: {
     type: Number,
-    default: 3,
+    default: 0,
   },
   totalPayment: {
     type: String,
