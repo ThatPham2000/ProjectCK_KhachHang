@@ -236,7 +236,7 @@ $(".upload-button").on("click", function () {
 
 // 
 $('.widget.dashboard-links a').on('click', function(){
-  console.log(123)
+ 
   $('.tab-pane[role="tabpanel"]').removeClass('show')
 })
 
