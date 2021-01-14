@@ -153,12 +153,16 @@ $(".add-to-cart").click(function (e) {
   
     const value = $(this).attr("value");
     const slugName = $(this).attr("name");
-    
+   
   
     if (parseInt(value) === 0) {
       const re = confirm("Bạn chắc chắn muốn xóa vật phẩm khỏi giỏ hàng ?");
       if (re == false) return false;
       $(this).parent().parent().css("display", "none");
+      //
+      $('#cart_items > div > div.table-responsive.cart_info > table > tbody > tr').not('tr[style="display: none;"]')
+			.length === 0 && CartEmpty();
+     
     }
 
     const request = $.ajax({
@@ -415,6 +419,22 @@ const wishlistEmpty = () => {
   $('.table.table-bordered').addClass("center-table");
 	$('.table.table-bordered').removeClass('table table-bordered');
 };
+
+const CartEmpty = () =>{
+
+  $('.main-cart').html(`
+  <div class = "center-table" style = "text-align: center; margin-bottom: 200px;margin-top: 200px;">
+								<h3>You have not put in your cart any products!</h3>
+										<h6 class="pt-3">
+											<span
+												><a class="text-success" href="/"
+													>Continue shopping</a
+												></span
+											>
+										</h6>
+            </div>`)
+            $('.main-cart').removeClass('main-cart');
+}
 $('#reset-password2').on('click', function (e) {
   e.preventDefault();
   const pass1 = $('input[name=password]').val();

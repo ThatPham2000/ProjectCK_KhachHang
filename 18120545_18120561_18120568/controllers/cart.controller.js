@@ -234,7 +234,8 @@ module.exports.putUpdate = async (req, res, next) => {
     });
 
     cart.items = cart.items.filter((item) => item !== null);
-
+    if (cart.totalCost === 'đ') 
+        cart.totalCost = '0';
     if (user) {
 
       for (let i = 0; i < cart.items.length; i++)
@@ -243,7 +244,8 @@ module.exports.putUpdate = async (req, res, next) => {
       await cartService.updateOne(user._id, cart)
       
     }
-
+    
+     
     req.session.cart = cart;
     res.status(200).json({
       msg: "success",

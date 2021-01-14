@@ -1,5 +1,6 @@
-
+<div class = 'main-cart'>
 <section id="cart_items">
+	{{#if cart.items.length}}
 	<div class="container">
 		<div class="breadcrumbs">
 			<ol class="breadcrumb">
@@ -8,7 +9,9 @@
 			</ol>
 		</div>
 		<div class="table-responsive cart_info">
+			
 			<table class="table table-condensed">
+				
 				<thead>
 					<tr class="cart_menu">
 						<td class="image">Item</td>
@@ -21,6 +24,7 @@
 				</thead>
 				
 				<tbody>
+					
 					{{#each cart.items}}
 					<tr>
 						<td class="cart_product">
@@ -53,10 +57,10 @@
 						</td>
 					</tr>
 					{{/each}}
-				
-
+					
 				</tbody>
 			</table>
+			
 		</div>
 	</div>
 </section> <!--/#cart_items-->
@@ -84,5 +88,20 @@
 			</div>
 		</div>
 	</div>
+	{{else}}
+						<div class = "center-table" style = "text-align: center; margin-bottom: 200px;margin-top: 200px;">
+								<h3>You have not put in your cart any products!</h3>
+										<h6 class="pt-3">
+											<span
+												><a class="text-success" href="/"
+													>Continue shopping</a
+												></span
+											>
+										</h6>
+						</div>
+					{{/if}}
+
+	
 </section><!--/#do_action-->
 
+</div>
