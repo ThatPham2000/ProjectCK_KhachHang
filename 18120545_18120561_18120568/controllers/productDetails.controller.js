@@ -1,12 +1,15 @@
 const { isValidObjectId } = require('mongoose');
 const Product= require('../models/product.model');
 
+module.exports.getRelatedProduct = product => 
+  Product.find({$or : [{producer: product.producer}]}).limit(16);
 exports.detail = async(req, res, next) => {
     const commentsPerPage = 3;
     // Get books from model
     console.log(req.params.slugname)
     Product.findOne({"slugName" : req.params.slugname})
     .then(product =>{
+        
         if (!product.countView){
 	         product.countView = 1;
          }else{
@@ -19,7 +22,8 @@ exports.detail = async(req, res, next) => {
             price: product.price,
             title: product.name,
             comments: product.comments.reverse(),
-            product: product
+            product: product,
+            related_products : Product.find({or: [{producer: product.producer}, {category: product.category}]}).limit(3)
         });
     })
     
