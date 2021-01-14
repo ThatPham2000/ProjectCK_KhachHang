@@ -20,7 +20,10 @@ module.exports.getOne = async (req, res) => {
 
     const _id = req.session.passport.user;
     
-  
+    const message = req.session.message;
+    delete req.session.message;
+    const messagePhone = req.session.messagePhone;
+    delete req.session.messagePhone
     User.findById(_id)
     .then(async (user) => {
         if(!user){
@@ -58,6 +61,8 @@ module.exports.getOne = async (req, res) => {
                     error: error,
                     errorPhone: errorPhone,
                     checkout: checkout,
+                    message: message,
+                    messagePhone: messagePhone,
                 });
 
             //delete res.session.error;
@@ -172,11 +177,12 @@ exports.changePassword = (req, res) =>{
 
 
                         if (newpass === confirmpass){
+                            console.log(newpass.length);
                             if (newpass.length < 6){
                                 req.session.error = "The minimum password length is 6!";
                                 return res.redirect('/user/account/profile');
                             } 
-                            else if ( newpass.length > 6){
+                            else if ( newpass.length > 30){
                                 req.session.error = 'The maximum password length is 30!';
                                 return res.redirect('/user/account/profile');
                             }
@@ -186,6 +192,7 @@ exports.changePassword = (req, res) =>{
                                     user.password = newhash;
 
                                     user.save();
+                                    req.session.message = 'The maximum password length is 30!';
                                     return res.redirect('/user/account/profile');
                                 })
                             }
@@ -233,7 +240,7 @@ exports.changeTel = (req, res) =>{
             if (user.phone == curPhone){
                 
                 user.phone = newPhone;
-                
+                req.session.messagePhone = "success";
                 user.save();
                 return res.redirect('/user/account/profile');
             }else{
@@ -331,7 +338,7 @@ module.exports.postLike = async (req, res, next) => {
         
         user.likes.push(like);
         await UserSevice.updateOneUser( user._id, user);
-		console.log(user)
+	
         
 		res.status(201).json({
 			msg: 'success',

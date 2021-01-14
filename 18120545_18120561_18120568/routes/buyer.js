@@ -10,7 +10,7 @@ var authorize = require("../middleware/auth");
 const router = express.Router();
 
 
-router.get('/login', controllers.getLogin);
+router.get('/login',authorize.noAuth, controllers.getLogin);
        
 router.post('/login', passport.authenticate("localSignin", {
                     successRedirect: "/",
@@ -26,28 +26,28 @@ router.post('/signup', passport.authenticate('localSignup', {
         }));
 
 
-router.get('/signup', controllers.getRegister);
+router.get('/signup', authorize.noAuth, controllers.getRegister);
 
 
-router.get('/confirm/:token', controllers.confirm);
+router.get('/confirm/:token',authorize.noAuth,  controllers.confirm);
 
 
 router.route('/forgot')
-        .get(controllers.getForgot)
-        .post(controllers.postForgot);
+        .get(authorize.noAuth, controllers.getForgot)
+        .post(authorize.noAuth, controllers.postForgot);
 
 router.route('/resetPassword/:token')
-        .get( controllers.getResetPassword)
-        .post( controllers.postResetPassword);
+        .get(authorize.noAuth,  controllers.getResetPassword)
+        .post(authorize.noAuth,  controllers.postResetPassword);
 
 
 
 router.route('/checkforgot/:token')
-    .get(controllers.getCheckFogot)
-    .post(controllers.forgot);
+    .get(authorize.noAuth, controllers.getCheckFogot)
+    .post(authorize.noAuth, controllers.forgot);
 
 
-router.post('/checkSignup', controllers.checkSingup);
+router.post('/checkSignup', authorize.noAuth, controllers.checkSingup);
 
 
 
