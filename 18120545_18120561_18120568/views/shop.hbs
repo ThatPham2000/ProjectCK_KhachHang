@@ -1,8 +1,7 @@
-
 <section id="advertisement">
-<div class="container">
-	<img src="images/shop/advertisement.jpg" alt="" />
-</div>
+    <div class="container">
+        <img src="images/shop/advertisement.jpg" alt="" />
+    </div>
 </section>
 
 <section>
@@ -140,29 +139,36 @@
                         <div class="col-sm-4">
                         <div class="product-image-wrapper">
                             <div class="single-products">
-                                    <div class="productinfo text-center">
-                                        <img src="{{images.[0]}}" alt="" style="border: 1px solid #ddd;  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);"/>
+                                <div class="productinfo text-center">
+                                    <img src="{{images.[0]}}" alt=""
+                                        style="border: 1px solid #ddd;  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);" />
+                                    <h2>{{price}}</h2>
+                                    <p style="width:600px;overflow:hidden;height:50px;line-height:50px;">{{name}}</p>
+
+
+                                    <a href="/product-details/{{slugName}}"
+                                        class="btn btn-default add-detail-none_hover"><i
+                                            class="fa fa-search-minus"></i>Detail</a>
+
+                                    <a href="#" class="btn btn-default add-to-cart" value="{{slugName}}"><i
+                                            class="fa fa-shopping-cart"></i>Add to cart</a>
+
+                                </div>
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
                                         <h2>{{price}}</h2>
-                                        <p style="width:600px;overflow:hidden;height:50px;line-height:50px;">{{name}}</p>
-                                       
-									
-									        <a href="/product-details/{{slugName}}" class="btn btn-default add-detail-none_hover"><i class="fa fa-search-minus"></i>Detail</a>
-								        
-                                            <a href="#" class="btn btn-default add-to-cart" value = "{{slugName}}"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        
-                                    </div>
-                                    <div class="product-overlay">
-                                        <div class="overlay-content">
-                                            <h2>{{price}}</h2>
-                                            <p>{{name}}</p>
-                                            <div class = 'd-flex justify-content-center'>
-									
-									        <a href="/product-details/{{slugName}}" class="btn btn-default add-detail"><i class="fa fa-search-minus"></i>Detail</a>
-								        
-                                       <a href="#" class="btn btn-default add-to-cart " value = "{{slugName}}"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
+                                        <p>{{name}}</p>
+                                        <div class='d-flex justify-content-center'>
+
+                                            <a href="/product-details/{{slugName}}"
+                                                class="btn btn-default add-detail"><i
+                                                    class="fa fa-search-minus"></i>Detail</a>
+
+                                            <a href="#" class="btn btn-default add-to-cart " value="{{slugName}}"><i
+                                                    class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                     </div>
+                                </div>
                             </div>
                             <div class="choose">
                                 <ul class="nav nav-pills nav-justified">
@@ -173,31 +179,50 @@
                         </div>
                     </div>
                     {{/each}}
-				
-				
-				
-				<div class="pagination">
+
+
+
+                    <div class="pagination">
+                        {{#if Name}}
                         {{#if hasPrevPage}}
                         {{#if Category}}
+<<<<<<< HEAD
                             <a href="/shop?category={{Category}}&page={{prevPage}}&producer={{producer}}">&laquo;</a>
                         {{else}}
                             <a href="/shop?page={{prevPage}}&producer={{producer}}">&laquo;</a>
+=======
+                        <a href="/shop?name={{Name}}&category={{Category}}&page={{prevPage}}">&laquo;</a>
+                        {{else}}
+                        <a href="/shop?name={{Name}}&page={{prevPage}}">&laquo;</a>
+>>>>>>> b65859af929acadbf631ce75b2803f90d0907e7c
                         {{/if}}
                         {{/if}}
 
                         {{#if hasPrevPage1}}
                         {{#if Category}}
+<<<<<<< HEAD
                             <a href="/shop?category={{Category}}&page={{prevPage1}}&producer={{producer}}">{{prevPage1}}</a>
                         {{else}}
                             <a href="/shop?page={{prevPage1}}&producer={{producer}}">{{prevPage1}}</a>
+=======
+                        <a href="/shop?name={{Name}}&category={{Category}}&page={{prevPage1}}">{{prevPage1}}</a>
+                        {{else}}
+                        <a href="/shop?name={{Name}}&page={{prevPage1}}">{{prevPage1}}</a>
+>>>>>>> b65859af929acadbf631ce75b2803f90d0907e7c
                         {{/if}}
                         {{/if}}
 
                         {{#if hasPrevPage2}}
                         {{#if Category}}
+<<<<<<< HEAD
                             <a href="/shop?category={{Category}}&page={{prevPage2}}&producer={{producer}}">{{prevPage2}}</a>
                         {{else}}
                             <a href="/shop?page={{prevPage2}}&producer={{producer}}">{{prevPage2}}</a>
+=======
+                        <a href="/shop?name={{Name}}&category={{Category}}&page={{prevPage2}}">{{prevPage2}}</a>
+                        {{else}}
+                        <a href="/shop?name={{Name}}&page={{prevPage2}}">{{prevPage2}}</a>
+>>>>>>> b65859af929acadbf631ce75b2803f90d0907e7c
                         {{/if}}
                         {{/if}}
 
@@ -205,32 +230,109 @@
 
                         {{#if hasNextPage1}}
                         {{#if Category}}
+<<<<<<< HEAD
                             <a href="/shop?category={{Category}}&page={{nextPage1}}&producer={{producer}}">{{nextPage1}}</a>
                         {{else}}
                             <a href="/shop?page={{nextPage1}}&producer={{producer}}">{{nextPage1}}</a>
+=======
+                        <a href="/shop?name={{Name}}&category={{Category}}&page={{nextPage1}}">{{nextPage1}}</a>
+                        {{else}}
+                        <a href="/shop?name={{Name}}&page={{nextPage1}}">{{nextPage1}}</a>
+>>>>>>> b65859af929acadbf631ce75b2803f90d0907e7c
                         {{/if}}
                         {{/if}}
 
                         {{#if hasNextPage2}}
                         {{#if Category}}
+<<<<<<< HEAD
                             <a href="/shop?category={{Category}}&page={{nextPage2}}&producer={{producer}}">{{nextPage2}}</a>
                         {{else}}
                             <a href="/shop?page={{nextPage2}}&producer={{producer}}">{{nextPage2}}</a>
+=======
+                        <a href="/shop?name={{Name}}&category={{Category}}&page={{nextPage2}}">{{nextPage2}}</a>
+                        {{else}}
+                        <a href="/shop?name={{Name}}&page={{nextPage2}}">{{nextPage2}}</a>
+>>>>>>> b65859af929acadbf631ce75b2803f90d0907e7c
                         {{/if}}
                         {{/if}}
 
                         {{#if hasNextPage}}
                         {{#if Category}}
+<<<<<<< HEAD
                             <a href="/shop?category={{Category}}&page={{nextPage}}&producer={{producer}}">&raquo;</a>
                         {{else}}
                             <a href="/shop?page={{nextPage}}&producer={{producer}}">&raquo;</a>
+=======
+                        <a href="/shop?name={{Name}}&category={{Category}}&page={{nextPage}}">&raquo;</a>
+                        {{else}}
+                        <a href="/shop?name={{Name}}&page={{nextPage}}">&raquo;</a>
+                        {{/if}}
+                        {{/if}}
+
+
+
+                        {{else}}
+
+
+
+
+
+                        {{#if hasPrevPage}}
+                        {{#if Category}}
+                        <a href="/shop?category={{Category}}&page={{prevPage}}">&laquo;</a>
+                        {{else}}
+                        <a href="/shop?page={{prevPage}}">&laquo;</a>
+                        {{/if}}
+                        {{/if}}
+
+                        {{#if hasPrevPage1}}
+                        {{#if Category}}
+                        <a href="/shop?category={{Category}}&page={{prevPage1}}">{{prevPage1}}</a>
+                        {{else}}
+                        <a href="/shop?page={{prevPage1}}">{{prevPage1}}</a>
+                        {{/if}}
+                        {{/if}}
+
+                        {{#if hasPrevPage2}}
+                        {{#if Category}}
+                        <a href="/shop?category={{Category}}&page={{prevPage2}}">{{prevPage2}}</a>
+                        {{else}}
+                        <a href="/shop?page={{prevPage2}}">{{prevPage2}}</a>
+                        {{/if}}
+                        {{/if}}
+
+                        <a href="#" class="active">{{currentPage}}</a>
+
+                        {{#if hasNextPage1}}
+                        {{#if Category}}
+                        <a href="/shop?category={{Category}}&page={{nextPage1}}">{{nextPage1}}</a>
+                        {{else}}
+                        <a href="/shop?page={{nextPage1}}">{{nextPage1}}</a>
+                        {{/if}}
+                        {{/if}}
+
+                        {{#if hasNextPage2}}
+                        {{#if Category}}
+                        <a href="/shop?category={{Category}}&page={{nextPage2}}">{{nextPage2}}</a>
+                        {{else}}
+                        <a href="/shop?page={{nextPage2}}">{{nextPage2}}</a>
+                        {{/if}}
+                        {{/if}}
+
+                        {{#if hasNextPage}}
+                        {{#if Category}}
+                        <a href="/shop?category={{Category}}&page={{nextPage}}">&raquo;</a>
+                        {{else}}
+                        <a href="/shop?page={{nextPage}}">&raquo;</a>
+                        {{/if}}
+>>>>>>> b65859af929acadbf631ce75b2803f90d0907e7c
                         {{/if}}
                         {{/if}}
                     </div>
-				
-			</div><!--features_items-->
-		</div>
-	</div>
-</div>
-</section>
 
+                </div>
+                <!--features_items-->
+            </div>
+        </div>
+    </div>
+</section>

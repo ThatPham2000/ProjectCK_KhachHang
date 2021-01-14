@@ -14,16 +14,22 @@ module.exports.listProductPagination = async(req, res) => {
     const Category = req.query.category;
     const Name = req.query.name;
     const Producer = req.query.producer;
+    const Rating = req.query.rating;
     const sort = req.query.sort;
     const Query = {};
     if (Category) {
         Query.category = Category;
     }
     if (Name) {
-        Query.name = Name;
+        const regex = new RegExp(escapeRegex(Name), 'gi');
+        Query.name = regex;
     }
-    if (Producer){
-        Query.producer = Producer;
+    if (Producer) {
+        const regex = new RegExp(escapeRegex(req.query.producer), 'gi');
+        Query.producer = regex;
+    }
+    if (Rating) {
+        Query.rating = Rating;
     }
 
     // const Products = await ProductService.listAllProduct();
@@ -48,7 +54,7 @@ module.exports.listProductPagination = async(req, res) => {
         prevPage: pagination.prevPage,
         lastPage: pagination.totalPages,
         currentPage: pagination.page,
-        
+
 
         //index page
         hasPrevPage1: (pagination.page - 2 > 0 ? true : false),
@@ -62,6 +68,11 @@ module.exports.listProductPagination = async(req, res) => {
 
         //Category
         Category: Category,
-        producer: Producer
+        producer: Producer,
+        Name: Name
     })
 }
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
