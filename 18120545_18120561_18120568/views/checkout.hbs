@@ -1,5 +1,16 @@
 
 <section id="cart_items">
+	{{#if message}}
+		<script>
+				var txt;
+				var r = confirm("Your cart is empty!");
+				if (r == true) {
+					txt = "You pressed OK!";
+				} else {
+					txt = "You pressed Cancel!";
+				}
+		</script>
+	{{/if}}
 	<div class="container">
 		<div class="breadcrumbs">
 			<ol class="breadcrumb">

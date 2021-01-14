@@ -7,6 +7,8 @@ const { response } = require("../app");
 module.exports.getCheckout = async(req, res, next) =>{
 
     const {user} = req;
+    const message = req.session.message;
+    delete req.session.message;
     try{
 
         const userCart = await cartService.findIdbyStatus(user._id, "waiting");
@@ -16,6 +18,7 @@ module.exports.getCheckout = async(req, res, next) =>{
             title: "Checkout",
             cart: userCart,
             user: user,
+            message: message,
         })
     }catch(err){
         res.render("error", {
@@ -36,7 +39,7 @@ module.exports.postCheckout = async (req, res, next) =>{
         const cart = await cartService.findIdbyStatus(user._id, "waiting");
         
         if(cart.totalQuantity == 0){
-
+            req.session.message = "fail";
             return res.redirect("/checkout");
         }
 

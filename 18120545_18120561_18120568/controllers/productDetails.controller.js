@@ -15,8 +15,6 @@ exports.detail = async(req, res, next) => {
       category,
       producer
     }).limit(9);
-  
-
     return res.render('product-details',{
       msg: 'success',
       id: product._id,

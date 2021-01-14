@@ -1,4 +1,28 @@
 <body class="user-profile section">
+
+	{{#if message}}
+		<script>
+				var txt;
+				var r = confirm("Change password successfully.");
+				if (r == true) {
+					txt = "You pressed OK!";
+				} else {
+					txt = "You pressed Cancel!";
+				}
+		</script>
+	{{/if}}
+	{{#if messagePhone}}
+		<script>
+				var txt;
+				var r = confirm("Change phone number successfully.");
+				if (r == true) {
+					txt = "You pressed OK!";
+				} else {
+					txt = "You pressed Cancel!";
+				}
+		</script>
+	{{/if}}
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3">

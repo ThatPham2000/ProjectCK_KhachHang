@@ -13,7 +13,7 @@ module.exports.auth = async (req, res, next) =>{
     
     User.findById(id, (err, result) => {
 
-        console.log(result);
+        
         if (!result){
             res.redirect('/buyer/login');
             return;   
@@ -28,4 +28,15 @@ module.exports.auth = async (req, res, next) =>{
     })
     
     
+}
+
+module.exports.noAuth = async (req, res, next) =>{
+
+    if (req.isAuthenticated()){
+
+        return res.redirect('/');
+        
+    }
+    next();
+
 }
