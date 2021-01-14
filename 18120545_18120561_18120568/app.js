@@ -63,7 +63,7 @@ app.use(express.static('public'));
   index++;
   return index;
 });
- 
+handlebars.registerHelper("equal", require("handlebars-helper-equal"));
 app.use(
     session({
       secret:  seKey, 

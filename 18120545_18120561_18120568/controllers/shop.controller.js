@@ -1,6 +1,7 @@
 const ProductService = require('../models/ProductService.js');
 const Product = require("../models/product.model");
 const ITEM_PER_PAGE = 12;
+const {parsePrice} = require('../utils/statistics');
 module.exports.index = async(req, res, next) => {
     const products = await ProductService.listAllProduct();
 
@@ -8,6 +9,7 @@ module.exports.index = async(req, res, next) => {
 }
 
 module.exports.listProductPagination = async(req, res) => {
+    
     const page = +req.query.page || 1;
     const Category = req.query.category;
     const Name = req.query.name;
@@ -27,6 +29,16 @@ module.exports.listProductPagination = async(req, res) => {
     // const Products = await ProductService.listAllProduct();
     // res.send(Products);
     const pagination = await ProductService.listProdPagination(Query, page, 12, sort);
+    if(sort && sort === 'asc'){
+        pagination = pagination.sort((a, b) => {
+            return parsePrice(a.price) - parsePrice(b.price);
+        });
+    }else if(sort && sort === 'desc'){
+        pagination = pagination.sort((a,b) => {
+            return -parsePrice(a.price) + parsePrice(b.price);
+        });
+    }
+    res.locals.sort = sort || '';
     res.render('shop', {
         title: 'Shop',
         products: pagination.docs,
@@ -49,6 +61,7 @@ module.exports.listProductPagination = async(req, res) => {
         nextPage2: pagination.page + 2,
 
         //Category
-        Category: Category
+        Category: Category,
+        producer: Producer
     })
 }
